@@ -3,6 +3,23 @@ entries:
   paperless:
   - apiVersion: v2
     appVersion: 1.9.2
+    created: "2023-03-09T20:17:45.261007772Z"
+    dependencies:
+    - name: redis
+      repository: https://helm.seibert.family
+      version: 0.1.2
+    - name: postgres
+      repository: https://helm.seibert.family
+      version: 0.1.2
+    description: Paperless-NGX Chart
+    digest: 4ab9111801d1d676724d972683cf154f7f6a461d6412b89e228c37a6cfc3b746
+    name: paperless
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.4/paperless-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.9.2
     created: "2023-03-09T20:09:05.051004489Z"
     dependencies:
     - name: redis
@@ -101,4 +118,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-09T20:13:48.109236131Z"
+generated: "2023-03-09T20:17:45.261026572Z"
