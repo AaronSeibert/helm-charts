@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: postgres-configmap
+  name: {{ .Release.Name }}-configmap
   labels:
     app: postgres
 data: { { - with .Values.configMap } }

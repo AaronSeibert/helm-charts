@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: postgres-configmap
+                name: {{ .Release.Name }}-configmap
           ports:
             - name: postgresql
               containerPort: 5432
