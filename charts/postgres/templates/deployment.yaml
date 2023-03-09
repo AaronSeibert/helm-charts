@@ -54,14 +54,12 @@ spec:
             timeoutSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.persistence.enabled  }}
+{{- if .Values.persistence.enabled  }}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
-          {{- end }}
-      {{- if .Values.persistence.enabled  }}
       volumes:
         - name: postgresdb
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (printf "%s-pvc" (include "postgres.fullname" .)) }}
-      {{- end }}
+{{- end }}
