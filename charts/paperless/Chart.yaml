@@ -5,9 +5,9 @@ dependencies:
 - name: redis
   version: 0.1.1
   repository: https://helm.seibert.family
-- name: postgres
-  version: 0.1.0
-  repository: https://helm.seibert.family
+# - name: postgres
+#   version: 0.1.0
+#   repository: https://helm.seibert.family
 
 # A chart can be either an 'application' or a 'library' chart.
 #
