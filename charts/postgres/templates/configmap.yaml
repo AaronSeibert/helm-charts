@@ -4,4 +4,5 @@ metadata:
   name: {{ .Release.Name }}-configmap
   labels:
     app: postgres
-data: { { - with .Values.configMap } }
+data: 
+  {{- with .Values.configMap }}
