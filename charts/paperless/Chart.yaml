@@ -6,7 +6,7 @@ dependencies:
   version: ~0.1.2
   repository: https://helm.seibert.family
 - name: postgres
-  version: ~0.1.3
+  version: ~0.1.5
   repository: https://helm.seibert.family
 
 # A chart can be either an 'application' or a 'library' chart.
