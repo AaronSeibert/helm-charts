@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "redis.fullname" . }}
+  name: {{ include "postresql.fullname" . }}
   labels:
-    {{- include "redis.labels" . | nindent 4 }}
+    {{- include "postresql.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "redis.selectorLabels" . | nindent 6 }}
+      {{- include "postresql.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "redis.selectorLabels" . | nindent 8 }}
+        {{- include "postresql.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "redis.serviceAccountName" . }}
+      serviceAccountName: {{ include "postresql.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,24 +33,18 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-            - redis-server
-          args: ["--save 60 1","--loglevel warning"]
           ports:
-            - name: redis
-              containerPort: 6379
+            - name: http
+              containerPort: 80
               protocol: TCP
           livenessProbe:
-            tcpSocket:
-              port: redis
+            httpGet:
+              path: /
+              port: http
           readinessProbe:
-            exec:
-              command:
-                - redis-cli
-                - ping
-            initialDelaySeconds: 20
-            timeoutSeconds: 5
-            periodSeconds: 3
+            httpGet:
+              path: /
+              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
