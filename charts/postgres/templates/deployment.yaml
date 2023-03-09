@@ -58,6 +58,7 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
+          {{- end }}
       {{- if .Values.persistence.enabled  }}
       volumes:
         - name: postgresdb
