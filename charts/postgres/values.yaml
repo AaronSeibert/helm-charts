@@ -15,6 +15,7 @@ persistence:
   existingClaim: ""
   accessMode: ReadWriteOnce
   storageClass: ""
+  size: 1Gi
 
 nameOverride: ""
 fullnameOverride: ""
