@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "postgres.fullname" . "-pv-claim"}}
+  name: {{ template "postgres.fullname" . "-pvc"}}
   namespace: {{ .Release.Namespace }}
 {{- with .Values.persistence.annotations  }}
   annotations:
