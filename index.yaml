@@ -188,6 +188,16 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: 7.0.9
+    created: "2023-03-09T21:10:30.177325917Z"
+    description: redis chart for applications with redis as a dependency
+    digest: cee4c1ea4c266438b2f8397cca25f1d1a3896dda968651799704d9f712759781
+    name: redis
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.7/redis-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 7.0.9
     created: "2023-03-09T21:06:21.970240668Z"
     description: redis chart for applications with redis as a dependency
     digest: a9e86b93388d91f8eb81a18ee82b290be79307e0263b09bb9359444d1dc381f8
@@ -256,4 +266,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-09T21:06:21.970299171Z"
+generated: "2023-03-09T21:10:30.177648615Z"
