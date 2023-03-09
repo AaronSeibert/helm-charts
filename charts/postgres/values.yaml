@@ -28,9 +28,9 @@ service:
   port: 5432
 
 configMap:
-  POSTGRES_DB: postgresdb
-  POSTGRES_USER: admin
-  POSTGRES_PASSWORD: psltest
+  postgresDb: postgresdb
+  postgresUser: admin
+  postgresPassword: psltest
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
