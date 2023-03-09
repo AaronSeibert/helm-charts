@@ -8,7 +8,7 @@ Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
 Once Helm is set up properly, add the repo as follows:
 
 ```console
-helm repo add aaronseibert https://gerkelznik.github.io/helm-charts
+helm repo add aaronseibert https://helm.seibert.family/
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
