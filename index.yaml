@@ -154,6 +154,16 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "15.2"
+    created: "2023-03-09T21:19:42.659374582Z"
+    description: Postgres Chart
+    digest: 5957de277cc38c3d162ee2e69fc4713a95c0b8e34bd1f5ba453b113ebad29643
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/postgres-0.1.6/postgres-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: "15.2"
     created: "2023-03-09T20:36:12.272298023Z"
     description: Postgres Chart
     digest: 0988aba71cf4142c99674e115ea3725d7872f8841648a75209947b0ebdeb8db3
@@ -283,4 +293,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-09T21:14:52.562945309Z"
+generated: "2023-03-09T21:19:42.659438783Z"
