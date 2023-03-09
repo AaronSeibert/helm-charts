@@ -11,4 +11,5 @@ spec:
       targetPort: {{ .Values.service.targetPort }}
       protocol: {{ .Values.service.protocol }}
       name: {{ .Values.service.name }}
+  selector:
     {{- include "redis.selectorLabels" . | nindent 4 }}
