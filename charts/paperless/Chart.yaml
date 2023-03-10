@@ -2,14 +2,14 @@
 apiVersion: v2
 name: paperless
 description: Paperless-NGX Chart
+maintainers:
+  - email: aaron@awseibert.net
+    name: Aaron Seibert
 dependencies:
 - name: redis
   version: ~0.1.7
-  repository: https://helm.seibert.family
 - name: postgres
   version: ~0.1.14
-  repository: https://helm.seibert.family
-
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives

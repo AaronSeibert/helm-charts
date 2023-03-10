@@ -1,11 +1,10 @@
 {{ define "common.requirements" }}
-## 
 - [`helm`](https://helm.sh) - Refer to their [docs](https://helm.sh/docs) to get started.
+
+{{ template "chart.requirementsTable" . }}
 {{- end }}
 
 {{ define "common.usage" }}
-## Usage
-
 To use this chart add the repo as follows:
 
 ```console
