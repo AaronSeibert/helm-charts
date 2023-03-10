@@ -81,9 +81,17 @@ $ helm delete paperless-ngx
 | consumption.enabled | bool | `true` | Enable the volume mount of a [consumption directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders). |
 | consumption.mountPath | string | `"/consumption"` | Mount path of the consumption directory inside the container. |
 | consumption.hostPath | string | `""` | Host path of the consumption directory outside the container. |
+| consumption.nfs.enabled | bool | `false` | Enable NFS for the consumption directory |
+| consumption.nfs.server | string | `""` | The NFS server to use |
+| consumption.nfs.path | string | `""` | The path to the directory |
+| consumption.nfs.readOnly | bool | `false` | Mount the directory read-only. This must be false |
 | export.enabled | bool | `true` | Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter). |
 | export.mountPath | string | `"/export"` | Mount path of the export directory inside the container. |
 | export.hostPath | string | `""` | Host path of the export directory outside the container. |
+| export.nfs.enabled | bool | `false` | Enable NFS for the export directory |
+| export.nfs.server | string | `""` | The NFS server to use |
+| export.nfs.path | string | `""` | The path to the directory |
+| export.nfs.readOnly | bool | `false` | Mount the directory read-only. This must be false |
 | export.cronJob.enabled | bool | `false` | Create a `CronJob` object for [automated exports](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups). |
 | export.cronJob.schedule | string | `"0 4 * * 1"` | Schedule for automated exports. |
 | export.cronJob.suspend | bool | `false` | Enable/disable the cron job schedule quickly. |
@@ -94,6 +102,10 @@ $ helm delete paperless-ngx
 | trash.enabled | bool | `false` | Enable the volume mount of a [trash directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders). |
 | trash.mountPath | string | `"/trash"` | Mount path of the trash directory inside the container. |
 | trash.hostPath | string | `""` | Host path of the trash directory outside the container. |
+| trash.nfs.enabled | bool | `false` | Enable NFS for the trash directory |
+| trash.nfs.server | string | `""` | The NFS server to use |
+| trash.nfs.path | string | `""` | The path to the directory |
+| trash.nfs.readOnly | bool | `false` | Mount the directory read-only. This must be false |
 | serviceAccount.name | string | `""` | Specify the service account used for the controller. |
 | rbac.create | bool | `true` | Create `Role` and `RoleBinding` objects. |
 | rbac.annotations | object | `{}` | Additional annotations for the role and role binding objects. |

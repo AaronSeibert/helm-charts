@@ -108,6 +108,15 @@ consumption:
   mountPath: /consumption
   # -- Host path of the consumption directory outside the container.
   hostPath: ''
+  nfs:
+    # -- Enable NFS for the consumption directory
+    enabled: false
+    # -- The NFS server to use
+    server: ""
+    # -- The path to the directory
+    path: ""
+    # -- Mount the directory read-only. This must be false
+    readOnly: false
 
 export:
   # -- Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter).
@@ -116,6 +125,15 @@ export:
   mountPath: /export
   # -- Host path of the export directory outside the container.
   hostPath: ''
+  nfs:
+    # -- Enable NFS for the export directory
+    enabled: false
+    # -- The NFS server to use
+    server: ""
+    # -- The path to the directory
+    path: ""
+    # -- Mount the directory read-only. This must be false
+    readOnly: false
   cronJob:
     # -- Create a `CronJob` object for [automated exports](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups).
     enabled: false
@@ -139,6 +157,15 @@ trash:
   mountPath: /trash
   # -- Host path of the trash directory outside the container.
   hostPath: ''
+  nfs:
+    # -- Enable NFS for the trash directory
+    enabled: false
+    # -- The NFS server to use
+    server: ""
+    # -- The path to the directory
+    path: ""
+    # -- Mount the directory read-only. This must be false
+    readOnly: false
 
 serviceAccount:
   # -- Specify the service account used for the controller.
