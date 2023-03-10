@@ -6,18 +6,19 @@ maintainers:
   - email: aaron@awseibert.net
     name: Aaron Seibert
 dependencies:
+- name: base
+  version: 1.0.0
+  repository: https://helm.seibert.family
 - name: redis
   version: ~0.1.7
-  repository: file://../redis
-  alias: broker
+  repository: https://helm.seibert.family
 - name: postgres
   version: ~0.1.14
-  repository: file://../postgres
-  alias: database
+  repository: https://helm.seibert.family
 - name: paperless-ngx
   version: ~0.1.0
-  repository: file://../paperless-ngx
-  alias: webserver 
+  repository: https://helm.seibert.family
+  alias: frontend 
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives

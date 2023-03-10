@@ -36,32 +36,9 @@ $ helm delete paperless
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"paperlessngx/paperless-ngx"` |  |
-| image.tag | string | `""` |  |
-| ingress.annotations | object | `{}` |  |
-| ingress.className | string | `""` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths[0].path | string | `"/"` |  |
-| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingress.tls | list | `[]` |  |
-| ingressRoute | object | `{"enabled":false}` | Configure the IngressRoute resource for Traefik CRD |
-| ingressRoute.enabled | bool | `false` | Enable IngressRoute. Creates IngressRoute resources for any web endpoints for this application |
-| nameOverride | string | `""` |  |
-| persistence | object | `{"accessMode":"ReadWriteOnce","enabled":false,"existingClaim":"","size":"1Gi","storageClass":""}` | Configure persistence settings for the application |
-| persistence.accessMode | string | `"ReadWriteOnce"` | [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) |
-| persistence.enabled | bool | `false` | Enable Persistence. Creates Persistent Volume Claims (or uses existing claims) and adds the volume definitions in the deployment |
-| persistence.existingClaim | string | `""` | Uses an existing PVC, specify the PVC name |
-| persistence.size | string | `"1Gi"` | Volume Size |
-| persistence.storageClass | string | `""` | StorageClass to use for volumes |
-| podAnnotations | object | `{}` |  |
-| postgres | object | `{}` | Values for postgres dependency |
-| redis | object | `{}` | Values for redis dependency |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| service | object | `{"port":80,"type":"ClusterIP"}` | Configure the service |
+| postgres | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml) | Enable and configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key. |
+| redis | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml) | Enable and configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key. |
+| frontend | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml) | Enable and configure [paperless-ngx subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx) under this key. |
 
 ## Maintainers
 

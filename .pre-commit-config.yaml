@@ -16,3 +16,6 @@ repos:
           
           # Document our dependency values
           - --document-dependency-values
+          
+          # Sort values based on file order, not alphanumeric
+          - --sort-values-order=file

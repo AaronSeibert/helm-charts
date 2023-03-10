@@ -36,32 +36,72 @@ $ helm delete paperless-ngx
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `""` |  |
-| image.tag | string | `""` |  |
-| ingress.annotations | object | `{}` |  |
-| ingress.className | string | `""` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths[0].path | string | `"/"` |  |
-| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingress.tls | list | `[]` |  |
-| ingressRoute | object | `{"enabled":false}` | Configure the IngressRoute resource for Traefik CRD |
-| ingressRoute.enabled | bool | `false` | Enable IngressRoute. Creates IngressRoute resources for any web endpoints for this application |
+| image.repository | string | `"ghcr.io/paperless-ngx/paperless-ngx"` | The repository to pull the image from. |
+| image.tag | string | `.Chart.AppVersion` | The docker tag, if left empty chart's appVersion will be used. |
+| image.pullPolicy | string | `"IfNotPresent"` | The pull policy for the controller. |
 | nameOverride | string | `""` |  |
-| persistence | object | `{"accessMode":"ReadWriteOnce","enabled":false,"existingClaim":"","size":"1Gi","storageClass":""}` | Configure persistence settings for the application |
-| persistence.accessMode | string | `"ReadWriteOnce"` | [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) |
-| persistence.enabled | bool | `false` | Enable Persistence. Creates Persistent Volume Claims (or uses existing claims) and adds the volume definitions in the deployment |
-| persistence.existingClaim | string | `""` | Uses an existing PVC, specify the PVC name |
-| persistence.size | string | `"1Gi"` | Volume Size |
-| persistence.storageClass | string | `""` | StorageClass to use for volumes |
-| podAnnotations | object | `{}` |  |
-| postgres | object | `{}` | Values for postgres dependency |
-| redis | object | `{}` | Values for redis dependency |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| service | object | `{"port":80,"type":"ClusterIP"}` | Configure the service |
+| fullnameOverride | string | `""` |  |
+| service.enabled | bool | `true` | Create a service for exposing this chart. |
+| service.type | string | `"ClusterIP"` | The service type used. |
+| service.annotations | object | `{}` | Additional annotations for the service object. |
+| service.labels | object | `{}` | Additional labels for the service object. |
+| ingressRoute.create | bool | `false` | Create an IngressRoute object for exposing this chart. |
+| ingressRoute.entryPoints | list | `[]` | List of [entry points](https://doc.traefik.io/traefik/routing/routers/#entrypoints) on which the ingress route will be available. |
+| ingressRoute.rule | string | `""` | [Matching rule](https://doc.traefik.io/traefik/routing/routers/#rule) for the underlying router. |
+| ingressRoute.middlewares | list | `[]` | List of [middleware objects](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middleware) for the ingress route. |
+| ingressRoute.tlsSecretName | string | `""` | Use an existing secret containing the TLS certificate. |
+| ingressRoute.annotations | object | `{}` | Additional annotations for the ingress route object. |
+| ingressRoute.labels | object | `{}` | Additional labels for the ingress route object. |
+| certificate.create | bool | `false` | Create an Certificate object for the exposed chart. |
+| certificate.dnsNames | list | `[]` | List of subject alternative names for the certificate. |
+| certificate.secretName | string | `""` | Name of the secret in which the certificate will be stored. Defaults to the first item in dnsNames. |
+| certificate.issuerRef.kind | string | `"ClusterIssuer"` | Type of the referenced certificate issuer. Can be "Issuer" or "ClusterIssuer". |
+| certificate.issuerRef.name | string | `""` | Name of the referenced certificate issuer. |
+| certificate.annotations | object | `{}` | Additional annotations for the certificate object. |
+| certificate.labels | object | `{}` | Additional labels for the certificate object. |
+| env[0] | object | `{"name":"TZ","value":"UTC"}` | Timezone for the container. |
+| ports.http.enabled | bool | `true` | Enable the port inside the `Deployment` and `Service` objects. |
+| ports.http.port | int | `8000` | The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`. |
+| ports.http.nodePort | string | `nil` | The external port used if `.service.type` == `NodePort`. |
+| ports.http.protocol | string | `"TCP"` | The protocol used for the service. |
+| secret.create | bool | `true` | Create a new secret containing the [secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security). |
+| secret.existingSecret | string | `""` | Use an existing secret to store the [secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security). |
+| secret.secretKey | string | `""` | [Secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security) used when not using an existing secret. |
+| secret.annotations | object | `{}` | Additional annotations for the secret object. |
+| secret.labels | object | `{}` | Additional labels for the secret object. |
+| persistentVolumeClaim.create | bool | `true` | Create a new persistent volume claim object. |
+| persistentVolumeClaim.mountPath | string | `"/usr/src/paperless"` | Mount path of the persistent volume claim object. |
+| persistentVolumeClaim.accessMode | string | `"ReadWriteOnce"` | Access mode of the persistent volume claim object. |
+| persistentVolumeClaim.volumeMode | string | `"Filesystem"` | Volume mode of the persistent volume claim object. |
+| persistentVolumeClaim.size | string | `"1Gi"` | Storage request size for the persistent volume claim object. |
+| persistentVolumeClaim.storageClassName | string | `""` | Storage class name for the persistent volume claim object. |
+| persistentVolumeClaim.existingPersistentVolumeClaim | string | `""` | Use an existing persistent volume claim object. |
+| persistentVolumeClaim.annotations | object | `{}` | Additional annotations for the persistent volume claim object. |
+| persistentVolumeClaim.labels | object | `{}` | Additional labels for the persistent volume claim object. |
+| consumption.enabled | bool | `true` | Enable the volume mount of a [consumption directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders). |
+| consumption.mountPath | string | `"/consumption"` | Mount path of the consumption directory inside the container. |
+| consumption.hostPath | string | `""` | Host path of the consumption directory outside the container. |
+| export.enabled | bool | `true` | Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter). |
+| export.mountPath | string | `"/export"` | Mount path of the export directory inside the container. |
+| export.hostPath | string | `""` | Host path of the export directory outside the container. |
+| export.cronJob.enabled | bool | `false` | Create a `CronJob` object for [automated exports](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups). |
+| export.cronJob.schedule | string | `"0 4 * * 1"` | Schedule for automated exports. |
+| export.cronJob.suspend | bool | `false` | Enable/disable the cron job schedule quickly. |
+| export.cronJob.successfulJobsHistoryLimit | int | `3` | The number of successful finished jobs to retain. |
+| export.cronJob.failedJobsHistoryLimit | int | `1` | The number of failed finished jobs to retain. |
+| export.cronJob.annotations | object | `{}` | Additional annotations for the cronjob object. |
+| export.cronJob.labels | object | `{}` | Additional labels for the cronjob object. |
+| trash.enabled | bool | `false` | Enable the volume mount of a [trash directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders). |
+| trash.mountPath | string | `"/trash"` | Mount path of the trash directory inside the container. |
+| trash.hostPath | string | `""` | Host path of the trash directory outside the container. |
+| serviceAccount.name | string | `""` | Specify the service account used for the controller. |
+| rbac.create | bool | `true` | Create `Role` and `RoleBinding` objects. |
+| rbac.annotations | object | `{}` | Additional annotations for the role and role binding objects. |
+| rbac.labels | object | `{}` | Additional labels for the role and role binding objects. |
+| securityContext | object | `{}` | Pod-level security attributes. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context). |
+| resources | object | `{}` | Compute resources used by the container. More info [here](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/). |
+| affinity | object | `{}` | Pod-level affinity. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling). |
+| tolerations | object | `{}` | Pod-level tolerations. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling). |
 
 ## License
 

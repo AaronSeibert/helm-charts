@@ -36,25 +36,25 @@ $ helm delete postgres
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| configMap.postgresDb | string | `"postgresdb"` |  |
-| configMap.postgresPassword | string | `"psltest"` |  |
-| configMap.postgresUser | string | `"admin"` |  |
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
+| replicaCount | int | `1` |  |
 | image.repository | string | `"postgres"` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.tag | string | `""` |  |
-| nameOverride | string | `""` |  |
-| persistence.accessMode | string | `"ReadWriteOnce"` |  |
 | persistence.enabled | bool | `false` |  |
 | persistence.existingClaim | string | `""` |  |
-| persistence.size | string | `"1Gi"` |  |
+| persistence.accessMode | string | `"ReadWriteOnce"` |  |
 | persistence.storageClass | string | `""` |  |
+| persistence.size | string | `"1Gi"` |  |
+| nameOverride | string | `""` |  |
+| fullnameOverride | string | `""` |  |
 | podAnnotations | object | `{}` |  |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| service.port | int | `5432` |  |
-| service.targetPort | string | `"postgresql"` |  |
 | service.type | string | `"ClusterIP"` |  |
+| service.targetPort | string | `"postgresql"` |  |
+| service.port | int | `5432` |  |
+| configMap.postgresDb | string | `"postgresdb"` |  |
+| configMap.postgresUser | string | `"admin"` |  |
+| configMap.postgresPassword | string | `"psltest"` |  |
+| resources | object | `{}` |  |
 
 ## License
 

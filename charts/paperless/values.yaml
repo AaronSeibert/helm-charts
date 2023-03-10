@@ -1,74 +1,9 @@
-# Default values for paperless.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
-image:
-  repository: paperlessngx/paperless-ngx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
-
-nameOverride: ""
-fullnameOverride: ""
-
-podAnnotations: {}
-
-# -- Configure the service
-service:
-  type: ClusterIP
-  port: 80
-
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts
-  #      - chart-example.local
-
-# -- Configure the IngressRoute resource for Traefik CRD
-ingressRoute:
-  # -- Enable IngressRoute. Creates IngressRoute resources for any web endpoints for this application
-  enabled: false
-
-# -- Configure persistence settings for the application
-persistence:
-  # -- Enable Persistence. Creates Persistent Volume Claims (or uses existing claims) and adds the volume definitions in the deployment
-  enabled: false
-  # -- Uses an existing PVC, specify the PVC name
-  existingClaim: ""
-  # -- [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
-  accessMode: ReadWriteOnce
-  # -- StorageClass to use for volumes
-  storageClass: ""
-  # -- Volume Size
-  size: 1Gi
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
-# -- Values for postgres dependency
+# -- Enable and configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key.
+# @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml)
 postgres: {}
-
-# -- Values for redis dependency
+# -- Enable and configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key.
+# @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml)
 redis: {}
-
+# -- Enable and configure [paperless-ngx subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx) under this key.
+# @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml)
+frontend: {}

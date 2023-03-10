@@ -1,64 +1,166 @@
-# Default values for paperless.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
 image:
-  repository: ""
+  # -- The repository to pull the image from.
+  repository: ghcr.io/paperless-ngx/paperless-ngx
+  # -- The docker tag, if left empty chart's appVersion will be used.
+  # @default -- `.Chart.AppVersion`
+  tag: ''
+  # -- The pull policy for the controller.
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
-podAnnotations: {}
-
-# -- Configure the service
 service:
+  # -- Create a service for exposing this chart.
+  enabled: true
+  # -- The service type used.
   type: ClusterIP
-  port: 80
-
-ingress:
-  enabled: false
-  className: ""
+  # -- Additional annotations for the service object.
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts
-  #      - chart-example.local
+  # -- Additional labels for the service object.
+  labels: {}
 
-# -- Configure the IngressRoute resource for Traefik CRD
 ingressRoute:
-  # -- Enable IngressRoute. Creates IngressRoute resources for any web endpoints for this application
-  enabled: false
+  # -- Create an IngressRoute object for exposing this chart.
+  create: false
+  # -- List of [entry points](https://doc.traefik.io/traefik/routing/routers/#entrypoints) on which the ingress route will be available.
+  entryPoints: []
+  # -- [Matching rule](https://doc.traefik.io/traefik/routing/routers/#rule) for the underlying router.
+  rule: ''
+  # -- List of [middleware objects](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middleware) for the ingress route.
+  middlewares: []
+  # -- Use an existing secret containing the TLS certificate.
+  tlsSecretName: ''
+  # -- Additional annotations for the ingress route object.
+  annotations: {}
+  # -- Additional labels for the ingress route object.
+  labels: {}
 
-# -- Configure persistence settings for the application
-persistence:
-  # -- Enable Persistence. Creates Persistent Volume Claims (or uses existing claims) and adds the volume definitions in the deployment
-  enabled: false
-  # -- Uses an existing PVC, specify the PVC name
-  existingClaim: ""
-  # -- [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+certificate:
+  # -- Create an Certificate object for the exposed chart.
+  create: false
+  # -- List of subject alternative names for the certificate.
+  dnsNames: []
+  # -- Name of the secret in which the certificate will be stored. Defaults to the first item in dnsNames.
+  secretName: ''
+  issuerRef:
+    # -- Type of the referenced certificate issuer. Can be "Issuer" or "ClusterIssuer".
+    kind: ClusterIssuer
+    # -- Name of the referenced certificate issuer.
+    name: ''
+  # -- Additional annotations for the certificate object.
+  annotations: {}
+  # -- Additional labels for the certificate object.
+  labels: {}
+
+env:
+  # -- Timezone for the container.
+  - name: TZ
+    value: UTC
+
+ports:
+  http:
+    # -- Enable the port inside the `Deployment` and `Service` objects.
+    enabled: true
+    # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
+    port: 8000
+    # -- The external port used if `.service.type` == `NodePort`.
+    nodePort: null
+    # -- The protocol used for the service.
+    protocol: TCP
+
+secret:
+  # -- Create a new secret containing the [secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security).
+  create: true
+  # -- Use an existing secret to store the [secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security).
+  existingSecret: ''
+  # -- [Secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security) used when not using an existing secret.
+  secretKey: ''
+  # -- Additional annotations for the secret object.
+  annotations: {}
+  # -- Additional labels for the secret object.
+  labels: {}
+
+persistentVolumeClaim:
+  # -- Create a new persistent volume claim object.
+  create: true
+  # -- Mount path of the persistent volume claim object.
+  mountPath: /usr/src/paperless
+  # -- Access mode of the persistent volume claim object.
   accessMode: ReadWriteOnce
-  # -- StorageClass to use for volumes
-  storageClass: ""
-  # -- Volume Size
+  # -- Volume mode of the persistent volume claim object.
+  volumeMode: Filesystem
+  # -- Storage request size for the persistent volume claim object.
   size: 1Gi
+  # -- Storage class name for the persistent volume claim object.
+  storageClassName: ''
+  # -- Use an existing persistent volume claim object.
+  existingPersistentVolumeClaim: ''
+  # -- Additional annotations for the persistent volume claim object.
+  annotations: {}
+  # -- Additional labels for the persistent volume claim object.
+  labels: {}
 
+consumption:
+  # -- Enable the volume mount of a [consumption directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders).
+  enabled: true
+  # -- Mount path of the consumption directory inside the container.
+  mountPath: /consumption
+  # -- Host path of the consumption directory outside the container.
+  hostPath: ''
+
+export:
+  # -- Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter).
+  enabled: true
+  # -- Mount path of the export directory inside the container.
+  mountPath: /export
+  # -- Host path of the export directory outside the container.
+  hostPath: ''
+  cronJob:
+    # -- Create a `CronJob` object for [automated exports](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups).
+    enabled: false
+    # -- Schedule for automated exports.
+    schedule: '0 4 * * 1'
+    # -- Enable/disable the cron job schedule quickly.
+    suspend: false
+    # -- The number of successful finished jobs to retain.
+    successfulJobsHistoryLimit: 3
+    # -- The number of failed finished jobs to retain.
+    failedJobsHistoryLimit: 1
+    # -- Additional annotations for the cronjob object.
+    annotations: {}
+    # -- Additional labels for the cronjob object.
+    labels: {}
+
+trash:
+  # -- Enable the volume mount of a [trash directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders).
+  enabled: false
+  # -- Mount path of the trash directory inside the container.
+  mountPath: /trash
+  # -- Host path of the trash directory outside the container.
+  hostPath: ''
+
+serviceAccount:
+  # -- Specify the service account used for the controller.
+  name: ''
+
+rbac:
+  # -- Create `Role` and `RoleBinding` objects.
+  create: true
+  # -- Additional annotations for the role and role binding objects.
+  annotations: {}
+  # -- Additional labels for the role and role binding objects.
+  labels: {}
+
+# -- Pod-level security attributes. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context).
+securityContext: {}
+  # fsGroup: 1000
+  # runAsNonRoot: true
+  # runAsGroup: 1000
+  # runAsUser: 1000
+
+# -- Compute resources used by the container. More info [here](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
@@ -66,9 +168,19 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-# -- Values for postgres dependency
-postgres: {}
+# -- Pod-level affinity. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling).
+affinity: {}
+  # nodeAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     nodeSelectorTerms:
+  #       - matchExpressions:
+  #           - key: kubernetes.io/hostname
+  #             operator: In
+  #             values:
+  #               - my-node-xyz
 
-# -- Values for redis dependency
-redis: {}
-
+# -- Pod-level tolerations. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling).
+tolerations: {}
+  # - key: node-role.kubernetes.io/control-plane
+  #   operator: Exists
+  #   effect: NoSchedule
