@@ -35,7 +35,9 @@ ingress:
   #    hosts
   #      - chart-example.local
 
+# -- Configure the IngressRoute resource for Traefik CRD
 ingressRoute:
+  # -- Enable IngressRoute. Creates IngressRoute resources for any web endpoints for this application
   enabled: false
 
 # -- Configure persistence settings for the application
