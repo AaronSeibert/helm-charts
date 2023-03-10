@@ -15,6 +15,7 @@ fullnameOverride: ""
 
 podAnnotations: {}
 
+# -- Configure the service
 service:
   type: ClusterIP
   port: 80
@@ -67,5 +68,7 @@ resources: {}
 
 # -- Values for postgres dependency
 postgres: {}
+
+# -- Values for redis dependency
 redis: {}
 

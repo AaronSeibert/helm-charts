@@ -1,47 +1,21 @@
-# [`{{ template "chart.name" . }}`]({{ template "chart.homepage" . }})
+{{ template "chart.header" . }}
 
 {{ template "chart.deprecationWarning" . }}
 
-> {{ template "chart.description" . }}
+{{ template "chart.description" . }}
 
-[{{ template "chart.typeBadge" .  }}]({{ template "chart.homepage" . }})[{{ template "chart.versionBadge" . }}]({{ template "chart.homepage" . }})[{{ template "chart.appVersionBadge" . }}]({{ template "chart.homepage" . }})
+{{ template "chart.homepage" . }} {{ template "chart.versionBadge" . }} {{ template "chart.appVersionBadge" . }}
 
 {{ template "chart.sourcesList" . }}
 
-## Requirements
+{{ template "common.requirements" . }}
 
-- [`helm`](https://helm.sh) - Refer to their [docs](https://helm.sh/docs) to get started.
-
-## Usage
-
-To use this chart add the repo as follows:
-
-```sh
-helm repo add aaronseibert https://helm.seibert.family
-```
-
-If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
-
-To install this chart simply run the following command:
-
-```sh
-helm install {{ template "chart.name" . }} aaronseibert/{{ template "chart.name" . }}
-```
-
-To uninstall this chart simply run the following command:
-
-```sh
-helm delete {{ template "chart.name" . }}
-```
+{{ template "common.usage" . }}
 
 {{ template "chart.valuesHeader" . }}
-
-The following values can be used to adjust the helm chart.
 
 {{ template "chart.valuesTable" . }}
 
 {{ template "chart.maintainersSection" . }}
 
-## License
-
-[MIT](../LICENSE.md) – © {{ now | date "2006" }} [Aaron Seibert](https://helm.seibert.family)
+{{ template "common.footer" . }}

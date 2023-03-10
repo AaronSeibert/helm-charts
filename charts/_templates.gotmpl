@@ -1,0 +1,34 @@
+{{ define "common.requirements" }}
+## 
+- [`helm`](https://helm.sh) - Refer to their [docs](https://helm.sh/docs) to get started.
+{{- end }}
+
+{{ define "common.usage" }}
+## Usage
+
+To use this chart add the repo as follows:
+
+```console
+$ helm repo add aaronseibert https://helm.seibert.family
+```
+
+If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
+
+To install this chart simply run the following command:
+
+```console
+$ helm install {{ template "chart.name" . }} aaronseibert/{{ template "chart.name" . }}
+```
+
+To uninstall this chart simply run the following command:
+
+```console
+$ helm delete {{ template "chart.name" . }}
+```
+{{- end }}
+
+{{ define "common.footer" }}
+## License
+
+[MIT](../LICENSE.md) – © {{ now | date "2006" }} [Aaron Seibert](https://helm.seibert.family)
+{{- end }}
