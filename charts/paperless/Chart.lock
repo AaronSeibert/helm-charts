@@ -1,9 +1,9 @@
 dependencies:
 - name: redis
-  repository: file://../redis
-  version: 0.1.8
+  repository: ""
+  version: ~0.1.7
 - name: postgres
-  repository: file://../postgres
-  version: 0.1.15
-digest: sha256:eafa89b0205864252d991f96f748b979616a2d16c09efbbff557b0b895c5d1bb
-generated: "2023-03-10T15:11:22.842612-05:00"
+  repository: ""
+  version: ~0.1.14
+digest: sha256:fc1e09301870d1492ecf2ca9a7f4703e4a0376736a826ee6c8ce829b91e1a8d1
+generated: "2023-03-10T15:56:52.688371-05:00"

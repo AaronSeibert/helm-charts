@@ -10,9 +10,6 @@ redis chart for applications with redis as a dependency
 
 - [`helm`](https://helm.sh) - Refer to their [docs](https://helm.sh/docs) to get started.
 
-| Repository | Name | Version |
-|------------|------|---------|
-
 ## Usage
 
 To use this chart add the repo as follows:

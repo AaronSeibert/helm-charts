@@ -1,10 +1,10 @@
 
 
-# paperless
+# paperless-ngx
 
-Paperless-NGX Chart
+A Helm chart for Kubernetes
 
-![Version: 0.1.11](https://img.shields.io/badge/Version-0.1.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square)
 
 ## Requirements
 
@@ -23,13 +23,13 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```console
-$ helm install paperless aaronseibert/paperless
+$ helm install paperless-ngx aaronseibert/paperless-ngx
 ```
 
 To uninstall this chart simply run the following command:
 
 ```console
-$ helm delete paperless
+$ helm delete paperless-ngx
 ```
 
 ## Values
@@ -38,7 +38,7 @@ $ helm delete paperless
 |-----|------|---------|-------------|
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"paperlessngx/paperless-ngx"` |  |
+| image.repository | string | `""` |  |
 | image.tag | string | `""` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -62,12 +62,6 @@ $ helm delete paperless
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | service | object | `{"port":80,"type":"ClusterIP"}` | Configure the service |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| Aaron Seibert | <aaron@awseibert.net> |  |
 
 ## License
 

@@ -8,8 +8,16 @@ maintainers:
 dependencies:
 - name: redis
   version: ~0.1.7
+  repository: file://../redis
+  alias: broker
 - name: postgres
   version: ~0.1.14
+  repository: file://../postgres
+  alias: database
+- name: paperless-ngx
+  version: ~0.1.0
+  repository: file://../paperless-ngx
+  alias: webserver 
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
