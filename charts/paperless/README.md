@@ -1,0 +1,63 @@
+# [`paperless`]()
+
+> Paperless-NGX Chart
+
+[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ]()[![Version: 0.1.11](https://img.shields.io/badge/Version-0.1.11-informational?style=flat-square) ]()[![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square) ]()
+
+## Requirements
+
+- [`helm`](https://helm.sh) - Refer to their [docs](https://helm.sh/docs) to get started.
+
+## Usage
+
+To use this chart add the repo as follows:
+
+```sh
+helm repo add aaronseibert https://helm.seibert.family
+```
+
+If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
+
+To install this chart simply run the following command:
+
+```sh
+helm install paperless aaronseibert/paperless
+```
+
+To uninstall this chart simply run the following command:
+
+```sh
+helm delete paperless
+```
+
+## Values
+
+The following values can be used to adjust the helm chart.
+
+| Key                                | Type   | Default                        | Description |
+| ---------------------------------- | ------ | ------------------------------ | ----------- |
+| fullnameOverride                   | string | `""`                           |             |
+| image.pullPolicy                   | string | `"IfNotPresent"`               |             |
+| image.repository                   | string | `"paperlessngx/paperless-ngx"` |             |
+| image.tag                          | string | `""`                           |             |
+| ingress.annotations                | object | `{}`                           |             |
+| ingress.className                  | string | `""`                           |             |
+| ingress.enabled                    | bool   | `false`                        |             |
+| ingress.hosts[0].host              | string | `"chart-example.local"`        |             |
+| ingress.hosts[0].paths[0].path     | string | `"/"`                          |             |
+| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"`     |             |
+| ingress.tls                        | list   | `[]`                           |             |
+| ingressRoute                       | object | `{}`                           |             |
+| nameOverride                       | string | `""`                           |             |
+| persistence.enabled                | bool   | `true`                         |             |
+| podAnnotations                     | object | `{}`                           |             |
+| postgres                           | object | `{}`                           |             |
+| redis                              | object | `{}`                           |             |
+| replicaCount                       | int    | `1`                            |             |
+| resources                          | object | `{}`                           |             |
+| service.port                       | int    | `80`                           |             |
+| service.type                       | string | `"ClusterIP"`                  |             |
+
+## License
+
+[MIT](../LICENSE.md) – © 2023 [Aaron Seibert](https://helm.seibert.family)
