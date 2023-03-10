@@ -65,6 +65,7 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+# -- Values for postgres dependency
 postgres: {}
 redis: {}
 
