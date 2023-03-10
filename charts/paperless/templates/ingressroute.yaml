@@ -1,0 +1,44 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: foo
+  namespace: bar
+spec:
+  entryPoints:                      
+    - foo
+  routes:                           
+  - kind: Rule
+    match: Host(`test.example.com`) 
+    priority: 10                    
+    middlewares:                    
+    - name: middleware1             
+      namespace: default            
+    services:                       
+    - kind: Service
+      name: foo
+      namespace: default
+      passHostHeader: true
+      port: 80                      
+      responseForwarding:
+        flushInterval: 1ms
+      scheme: https
+      serversTransport: transport   
+      sticky:
+        cookie:
+          httpOnly: true
+          name: cookie
+          secure: true
+          sameSite: none
+      strategy: RoundRobin
+      weight: 10
+  tls:                              
+    secretName: supersecret         
+    options:                        
+      name: opt                     
+      namespace: default            
+    certResolver: foo               
+    domains:                        
+    - main: example.net             
+      sans:                         
+      - a.example.net
+      - b.example.net
