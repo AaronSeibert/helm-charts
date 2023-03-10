@@ -35,10 +35,21 @@ ingress:
   #    hosts
   #      - chart-example.local
 
-ingressRoute: {}
+ingressRoute:
+  enabled: false
 
+# -- Configure persistence settings for the application
 persistence:
-  enabled: true
+  # -- Enable Persistence. Creates Persistent Volume Claims (or uses existing claims) and adds the volume definitions in the deployment
+  enabled: false
+  # -- Uses an existing PVC, specify the PVC name
+  existingClaim: ""
+  # -- [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+  accessMode: ReadWriteOnce
+  # -- StorageClass to use for volumes
+  storageClass: ""
+  # -- Volume Size
+  size: 1Gi
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
