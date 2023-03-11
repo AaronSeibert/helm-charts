@@ -65,7 +65,7 @@ spec:
             - name: PAPERLESS_DBUSER
               value: {{ .Values.global.database.postgres.user }}
             - name: PAPERLESS_DBPASS
-              value: {{ .Values.global.database.postgres. }}
+              value: {{ .Values.global.database.postgres.password }}
             {{- end }}
             {{- if .Values.global.broker.redis.enabled }}
             - name: PAPERLESS_REDIS
