@@ -1,6 +1,6 @@
 
 
-# paperless
+# paperless-ngx
 
 A Helm chart for Kubernetes
 
@@ -23,13 +23,13 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```console
-$ helm install paperless aaronseibert/paperless
+$ helm install paperless-ngx aaronseibert/paperless-ngx
 ```
 
 To uninstall this chart simply run the following command:
 
 ```console
-$ helm delete paperless
+$ helm delete paperless-ngx
 ```
 
 ## Values
