@@ -3,8 +3,8 @@ appVersion: 1.9.2
 description: Paperless-NGX Application - webserver component
 name: paperless-ngx
 type: application
-version: 0.1.4
+version: 0.1.5
 dependencies:
 - name: base
-  version: ~1.0.2
+  version: ~1.0.4
   repository: https://helm.seibert.family
