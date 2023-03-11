@@ -4,3 +4,7 @@ description: Paperless-NGX Application - webserver component
 name: paperless-ngx
 type: application
 version: 0.1.3
+dependencies:
+- name: base
+  version: 1.0.2
+  repository: https://helm.seibert.family
