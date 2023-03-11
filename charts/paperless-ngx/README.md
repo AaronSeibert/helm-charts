@@ -4,7 +4,7 @@
 
 Paperless-NGX Application - webserver component
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square)
 
 ## Requirements
 
@@ -41,6 +41,17 @@ $ helm delete paperless-ngx
 | image.pullPolicy | string | `"IfNotPresent"` | The pull policy for the controller. |
 | nameOverride | string | `""` |  |
 | fullnameOverride | string | `""` |  |
+| global.database | object | `{"postgres":{"enabled":false,"host":"","name":"paperless","password":"paperless","port":"","user":"paperless"}}` | database connection properties |
+| global.database.postgres.enabled | bool | `false` | enable/disable postgres support |
+| global.database.postgres.host | string | `""` | db host |
+| global.database.postgres.port | string | `""` | db port |
+| global.database.postgres.user | string | `"paperless"` | db user |
+| global.database.postgres.password | string | `"paperless"` | db password |
+| global.database.postgres.name | string | `"paperless"` | db name |
+| global.broker | object | `{"redis":{"enabled":false,"host":"","port":""}}` | broker connection properties |
+| global.broker.redis.enabled | bool | `false` | enable/disable redis support |
+| global.broker.redis.host | string | `""` | redis host |
+| global.broker.redis.port | string | `""` | redis port |
 | controller.enabled | bool | `true` | Create a workload for this chart. |
 | controller.kind | string | `"Deployment"` | Type of the workload object. |
 | controller.replicas | int | `1` | The number of replicas. |

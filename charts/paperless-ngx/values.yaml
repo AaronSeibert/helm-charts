@@ -10,6 +10,32 @@ image:
 nameOverride: ''
 fullnameOverride: ''
 
+global:
+  # -- database connection properties
+  database:
+    postgres:
+      # -- enable/disable postgres support
+      enabled: false
+      # -- db host
+      host: ''
+      # -- db port
+      port: ''
+      # -- db user
+      user: paperless
+      # -- db password
+      password: paperless
+      # -- db name
+      name: paperless
+  # -- broker connection properties
+  broker:
+    redis:
+      # -- enable/disable redis support
+      enabled: false
+      # -- redis host
+      host: ''
+      # -- redis port
+      port: ''
+
 controller:
   # -- Create a workload for this chart.
   enabled: true
