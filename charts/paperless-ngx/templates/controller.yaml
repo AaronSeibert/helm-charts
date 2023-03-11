@@ -116,6 +116,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
             {{- end }}
       volumes:
+        {{- if eq (include "base.persistence.enabled" .) "true" }}
         - name: storage-volume
           persistentVolumeClaim:
             {{- if and .Values.persistentVolumeClaim.create (empty .Values.persistentVolumeClaim.existingPersistentVolumeClaim) }}
@@ -123,6 +124,7 @@ spec:
             {{- else }}
             claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
             {{- end }}
+        {{- end }}
         {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
         - name: consumption-volume
           {{- if .Values.consumption.nfs.enabled }}
