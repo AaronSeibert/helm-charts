@@ -72,7 +72,7 @@ spec:
                 {{- end }}
                   key: secretKey
             {{- end }}
-            {{- if and .Values.ports.http.enabled (eq (include "paperless-ngx.fullname" .) "paperless-ngx.) }}
+            {{- if and .Values.ports.http.enabled (eq (include "paperless-ngx.fullname" .) "paperless-ngx") }}
             - name: PAPERLESS_PORT
               value: {{ quote .Values.ports.http.port }}
             {{- end }}
