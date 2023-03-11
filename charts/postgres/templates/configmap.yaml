@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-configmap
   labels:
     app: postgres
-data: 
+data:
   POSTGRES_DB: {{ .Values.configMap.postgresDB }}
   POSTGRES_USER: {{ .Values.configMap.postgresUser }}
   POSTGRES_PASSWORD: {{ .Values.configMap.postgresPassword }}

@@ -13,12 +13,17 @@ repos:
           # Repeating the flag adds this to the list, now [./_templates.gotmpl, README.md.gotmpl]
           # A base filename makes it relative to each chart directory found
           - --template-files=README.md.gotmpl
-          
+
           # Document our dependency values
           - --document-dependency-values
-          
+
           # Sort values based on file order, not alphanumeric
           - --sort-values-order=file
 
           # Increase log level to try to figure out why it's marking as failed
           - --log-level=trace
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0  # this is optional, use `pre-commit autoupdate` to get the latest rev!
+    hooks:
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace

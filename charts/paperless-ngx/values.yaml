@@ -10,7 +10,7 @@ image:
 nameOverride: ''
 fullnameOverride: ''
 
-controller: 
+controller:
   # -- Create a workload for this chart.
   enabled: true
   # -- Type of the workload object.
