@@ -77,12 +77,14 @@ spec:
               value: {{ quote .Values.ports.http.port }}
             {{- end }}
           volumeMounts:
+            {{- if eq (include "base.persistence.enabled" .) "true" }}
             - name: storage-volume
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}/data
               subPath: data
             - name: storage-volume
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}/media
               subPath: media
+            {{- end}}
             {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
             - name: consumption-volume
               mountPath: {{ include "paperless-ngx.consumption.mountPath" . }}
