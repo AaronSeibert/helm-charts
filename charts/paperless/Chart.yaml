@@ -1,7 +1,10 @@
 # yaml-language-server: $schema=https://json.schemastore.org/chart.json
 apiVersion: v2
 name: paperless
-description: An umbrella chart for Paperless
+type: application
+description: An umbrella chart for Paperless-NGX.
+version: 0.1.19
+appVersion: "1.9.2"
 maintainers:
   - email: aaron@awseibert.net
     name: Aaron Seibert
@@ -11,36 +14,16 @@ dependencies:
   repository: https://helm.seibert.family
 - name: redis
   version: ~0.1.7
-  condition: broker.redis.enabled
+  condition: global.broker.redis.enabled
   repository: https://helm.seibert.family
   alias: broker
 - name: postgres
   version: ~0.1.14
   repository: https://helm.seibert.family
-  condition: database.postgres.enabled
+  condition: global.database.postgres.enabled
   alias: database
 - name: paperless-ngx
   version: ~0.1.0
   repository: https://helm.seibert.family
   alias: webserver
   condition: webserver.enabled
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
-type: application
-
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
-# Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.18
-
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application. Versions are not expected to
-# follow Semantic Versioning. They should reflect the version the application is using.
-# It is recommended to use it with quotes.
-appVersion: "1.9.2"
