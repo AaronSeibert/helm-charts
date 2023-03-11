@@ -132,6 +132,7 @@ spec:
           hostPath:
             type: Directory
             path: {{ include "paperless-ngx.consumption.hostPath" . }}
+          {{- end}}
         {{- end }}
         {{- if eq (include "paperless-ngx.export.enabled" .) "true" }}
         - name: export-volume
@@ -144,6 +145,7 @@ spec:
           hostPath:
             type: Directory
             path: {{ include "paperless-ngx.export.hostPath" . }}
+          {{- end }}
         {{- end }}
         {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
         - name: trash-volume
@@ -156,6 +158,7 @@ spec:
           hostPath:
             type: Directory
             path: {{ include "paperless-ngx.trash.hostPath" . }}
+          {{- end}}
         {{- end }}
       {{- if .Values.securityContext }}
       securityContext:
