@@ -53,6 +53,24 @@ spec:
               value: {{ $val.value | quote }}
             {{- end }}
             {{- end }}
+            {{- if .Values.global.database.postgres.enabled }}
+            - name: PAPERLESS_DBENGINE
+              value: postgres
+            - name: PAPERLESS_DBHOST
+              value: {{ .Values.global.database.postgres.host }}
+            - name: PAPERLESS_DBPORT
+              value: {{ .Values.global.database.postgres.port }}
+            - name: PAPERLESS_DBNAME
+              value: {{ .Values.global.database.postgres.name }}
+            - name: PAPERLESS_DBUSER
+              value: {{ .Values.global.database.postgres.user }}
+            - name: PAPERLESS_DBPASS
+              value: {{ .Values.global.database.postgres. }}
+            {{- end }}
+            {{- if .Values.global.broker.redis.enabled }}
+            - name: PAPERLESS_REDIS
+              value: redis://{{ .Values.global.broker.redis.host }}:{{ .Values.global.broker.redis.port }}
+            {{- end}}
             {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
             - name: PAPERLESS_CONSUMPTION_DIR
               value: {{ include "paperless-ngx.consumption.mountPath" . }}
