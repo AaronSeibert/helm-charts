@@ -19,11 +19,11 @@ dependencies:
   repository: https://helm.seibert.family
   condition: database.postgres.enabled
   alias: database
-- name: paperless-ngx
-  version: ~0.1.0
-  repository: https://helm.seibert.family
-  alias: webserver
-  condition: webserver.enabled
+    #- name: paperless-ngx
+    # version: ~0.1.0
+    #repository: https://helm.seibert.family
+    #alias: webserver
+    #condition: webserver.enabled
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
