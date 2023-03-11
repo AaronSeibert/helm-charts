@@ -55,6 +55,38 @@ entries:
   paperless:
   - apiVersion: v2
     appVersion: 1.9.2
+    created: "2023-03-11T20:39:10.053283945Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family
+      version: 1.0.1
+    - alias: broker
+      condition: global.broker.redis.enabled
+      name: redis
+      repository: https://helm.seibert.family
+      version: ~0.1.7
+    - alias: database
+      condition: global.database.postgres.enabled
+      name: postgres
+      repository: https://helm.seibert.family
+      version: ~0.1.14
+    - alias: webserver
+      condition: webserver.enabled
+      name: paperless-ngx
+      repository: https://helm.seibert.family
+      version: ~0.1.0
+    description: An umbrella chart for Paperless-NGX.
+    digest: 1ca4c2cfd6716b8d2f60015595b09d8464a5ec77a19e5839f1518477e615e442
+    maintainers:
+    - email: aaron@awseibert.net
+      name: Aaron Seibert
+    name: paperless
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.19/paperless-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
+    appVersion: 1.9.2
     created: "2023-03-11T18:48:43.294725438Z"
     dependencies:
     - name: base
@@ -338,6 +370,20 @@ entries:
     - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.1/paperless-0.1.1.tgz
     version: 0.1.1
   paperless-ngx:
+  - apiVersion: v2
+    appVersion: 1.9.2
+    created: "2023-03-11T20:39:10.225212365Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family
+      version: ~1.0.4
+    description: Paperless-NGX Application - webserver component
+    digest: 01b6a83d144400f8d17063ef1c120863f18dc3120f001f4d7950064b785a270d
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-ngx-0.1.8/paperless-ngx-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     appVersion: 1.9.2
     created: "2023-03-11T19:48:14.427799638Z"
@@ -662,4 +708,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-11T19:48:14.427946438Z"
+generated: "2023-03-11T20:39:10.225480764Z"
