@@ -6,9 +6,9 @@ maintainers:
   - email: aaron@awseibert.net
     name: Aaron Seibert
 dependencies:
-  #- name: base
-  #version: 1.0.0
-  #repository: https://helm.seibert.family
+- name: base
+  version: 1.0.0
+  repository: https://helm.seibert.family
 - name: redis
   version: ~0.1.7
   condition: broker.redis.enabled
@@ -19,11 +19,11 @@ dependencies:
   repository: https://helm.seibert.family
   condition: database.postgres.enabled
   alias: database
-    #- name: paperless-ngx
-    # version: ~0.1.0
-    #repository: https://helm.seibert.family
-    #alias: webserver
-    #condition: webserver.enabled
+- name: paperless-ngx
+  version: ~0.1.0
+  repository: https://helm.seibert.family
+  alias: webserver
+  condition: webserver.enabled
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -37,7 +37,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.12
+version: 0.1.13
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
