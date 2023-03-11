@@ -3,6 +3,30 @@ entries:
   paperless:
   - apiVersion: v2
     appVersion: 1.9.2
+    created: "2023-03-11T14:14:57.852190609Z"
+    dependencies:
+    - alias: broker
+      condition: broker.redis.enabled
+      name: redis
+      repository: https://helm.seibert.family
+      version: ~0.1.7
+    - alias: database
+      condition: database.postgres.enabled
+      name: postgres
+      repository: https://helm.seibert.family
+      version: ~0.1.14
+    description: An umbrella chart for Paperless
+    digest: b5d0d3552cde10e8707908678fa76c6b3caca1ca7c8693b040956ce9527c9a39
+    maintainers:
+    - email: aaron@awseibert.net
+      name: Aaron Seibert
+    name: paperless
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.12/paperless-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
+    appVersion: 1.9.2
     created: "2023-03-09T21:58:11.581392864Z"
     dependencies:
     - name: redis
@@ -168,6 +192,17 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.1/paperless-0.1.1.tgz
     version: 0.1.1
+  paperless-ngx:
+  - apiVersion: v2
+    appVersion: 1.9.2
+    created: "2023-03-11T14:14:58.007754082Z"
+    description: A Helm chart for Kubernetes
+    digest: e472504915f9429386179b85c0397a74dde43fad0de29a852c13706938b5edeb
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-ngx-0.1.0/paperless-ngx-0.1.0.tgz
+    version: 0.1.0
   postgres:
   - apiVersion: v2
     appVersion: "15.2"
@@ -390,4 +425,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-09T21:58:11.581538965Z"
+generated: "2023-03-11T14:14:58.007901285Z"
