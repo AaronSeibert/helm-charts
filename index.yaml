@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   base:
   - apiVersion: v2
+    created: "2023-03-11T19:30:25.90898112Z"
+    description: Base Helm Chart
+    digest: 69fe53b7388b801be31031bbcf2d175c7a227ecb4be8e1e093056edbdc67e999
+    home: https://helm.seibert.family
+    keywords:
+    - library-chart
+    maintainers:
+    - email: aaron@awseibert.net
+      name: aaronseibert
+    name: base
+    sources:
+    - https://github.com/aaronseibert/helm-charts
+    type: library
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/base-1.0.4/base-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
     created: "2023-03-11T18:48:43.163498441Z"
     description: Base Helm Chart
     digest: 4d0941c67b7867a675789233e88eada0cba4043b3b2a16aff9d7ed6a2715483e
@@ -617,4 +634,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-11T19:24:44.590499671Z"
+generated: "2023-03-11T19:30:25.909193535Z"
