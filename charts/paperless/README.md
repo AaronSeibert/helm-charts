@@ -36,9 +36,9 @@ $ helm delete paperless
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| postgres | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml) | Enable and configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key. |
-| redis | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml) | Enable and configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key. |
-| frontend | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml) | Enable and configure [paperless-ngx subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx) under this key. |
+| database.postgres | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml) | Enable and configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key. |
+| broker.redis | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml) | Enable and configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key. |
+| webserver | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml) | Enable and configure [paperless-ngx subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx) under this key. |
 
 ## Maintainers
 

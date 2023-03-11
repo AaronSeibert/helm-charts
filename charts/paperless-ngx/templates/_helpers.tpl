@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "webapp.name" -}}
+{{- define "paperless-ngx.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "webapp.fullname" -}}
+{{- define "paperless-ngx.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,15 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "webapp.chart" -}}
+{{- define "paperless-ngx.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
-Common labels
-*/}}
-{{- define "webapp.labels" -}}
-helm.sh/chart: {{ include "webapp.chart" . }}
-{{ include "webapp.selectorLabels" . }}
+Common labels*/}}
+{{- define "paperless-ngx.labels" -}}
+helm.sh/chart: {{ include "paperless-ngx.chart" . }}
+{{ include "paperless-ngx.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,18 +44,44 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "webapp.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "webapp.name" . }}
+{{- define "paperless-ngx.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "paperless-ngx.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "webapp.serviceAccountName" -}}
+{{- define "paperless-ngx.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "webapp.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "paperless-ngx.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
+
+{{/*
+Consumption host path
+*/}}
+{{- define "paperless-ngx.consumption.hostPath" -}}
+{{- if .Values.consumption.enabled }}
+{{- .Values.consumption.hostPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Consumption mount path
+*/}}
+{{- define "paperless-ngx.conuired "Mandatory field \".certificate.issuerRef.name\" is empty!" .Values.certificate.issuerRef.name -}}
+{{- end }}
+
+{{/*
+IngressRoute TLS secret name
+*/}}
+{{- define "paperless-ngx.ingressRoute.tlsSecretName" -}}
+{{- if not (empty .Values.ingressRoute.tlsSecretName) }}
+{{- .Values.ingressRoute.tlsSecretName }}
+{{- else if .Values.certificate.create }}
+{{- include "paperless-ngx.certificate.name" . }}
 {{- end }}
 {{- end }}

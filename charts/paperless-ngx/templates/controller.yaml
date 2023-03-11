@@ -1,0 +1,172 @@
+{{- if .Values.controller.enabled -}}
+apiVersion: apps/v1
+kind: {{ include "base.controller.kind" . }}
+metadata:
+  name: {{ include "paperless-ngx.fullname" . }}
+  labels:
+    {{- include "paperless-ngx.labels" . | nindent 4 }}
+    {{- with .Values.controller.labels }}
+    {{ toYaml . | indent 4 }}
+    {{- end }}
+  {{- with .Values.controller.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.controller.replicas }}
+  replicas: {{ .Values.controller.replicas }}
+  {{- end }}
+  {{- if eq (include "base.controller.kind" . ) "StatefulSet" }}
+  serviceName: {{ include "paperless-ngx.fullname" . }}-headless
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "paperless-ngx.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.controller.annotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "paperless-ngx.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "paperless-ngx.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            {{- with .Values.ports.http }}
+            {{- if .enabled }}
+            - name: http
+              containerPort: {{ .port }}
+              protocol: {{ default "TCP" .protocol | quote }}
+            {{- end }}
+            {{- end }}
+          env:
+            {{- range $i, $val := .Values.env }}
+            - name: {{ $val.name | quote }}
+              value: {{ $val.value | quote }}
+            {{- if eq $val.name "TZ" }}
+            - name: PAPERLESS_TIME_ZONE
+              value: {{ $val.value | quote }}
+            {{- end }}
+            {{- end }}
+            {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
+            - name: PAPERLESS_CONSUMPTION_DIR
+              value: {{ include "paperless-ngx.consumption.mountPath" . }}
+            {{- end }}
+            {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
+            - name: PAPERLESS_TRASH_DIR
+              value: {{ include "paperless-ngx.trash.mountPath" . }}
+            {{- end }}
+            {{- if or .Values.secret.create (not (empty .Values.secret.existingSecret)) }}
+            - name: PAPERLESS_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                {{- if .Values.secret.existingSecret }}
+                  name: {{ .Values.secret.existingSecret }}
+                {{- else }}
+                  name: {{ printf "%s-secret-key" (include "paperless-ngx.fullname" .) }}
+                {{- end }}
+                  key: secretKey
+            {{- end }}
+            {{- if and .Values.ports.http.enabled (eq (include "paperless-ngx.fullname" .) "paperless-ngx.) }}
+            - name: PAPERLESS_PORT
+              value: {{ quote .Values.ports.http.port }}
+            {{- end }}
+          volumeMounts:
+            - name: storage-volume
+              mountPath: {{ .Values.persistentVolumeClaim.mountPath }}/data
+              subPath: data
+            - name: storage-volume
+              mountPath: {{ .Values.persistentVolumeClaim.mountPath }}/media
+              subPath: media
+            {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
+            - name: consumption-volume
+              mountPath: {{ include "paperless-ngx.consumption.mountPath" . }}
+            {{- end }}
+            {{- if eq (include "paperless-ngx.export.enabled" .) "true" }}
+            - name: export-volume
+              mountPath: {{ include "paperless-ngx.export.mountPath" . }}
+            {{- end }}
+            {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
+            - name: trash-volume
+              mountPath: {{ include "paperless-ngx.trash.mountPath" . }}
+            {{- end }}
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            failureThreshold: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources: {{ if not .Values.resources -}}{}{{- end }}
+            {{- if .Values.resources }}
+            {{- toYaml .Values.resources | nindent 12 }}
+            {{- end }}
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            {{- if and .Values.persistentVolumeClaim.create (empty .Values.persistentVolumeClaim.existingPersistentVolumeClaim) }}
+            claimName: {{ printf "%s-storage" (include "paperless-ngx.fullname" . ) }}
+            {{- else }}
+            claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
+            {{- end }}
+        {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
+        - name: consumption-volume
+          {{- if .Values.consumption.nfs.enabled }}
+          nfs:
+            server: {{ .Values.consumption.nfs.server }}
+            path: {{ .Values.consumption.nfs.path }}
+            readOnly: false
+          {{- else }}
+          hostPath:
+            type: Directory
+            path: {{ include "paperless-ngx.consumption.hostPath" . }}
+        {{- end }}
+        {{- if eq (include "paperless-ngx.export.enabled" .) "true" }}
+        - name: export-volume
+          {{- if .Values.export.nfs.enabled }}
+          nfs:
+            server: {{ .Values.export.nfs.server }}
+            path: {{ .Values.export.nfs.path }}
+            readOnly: false
+          {{- else }}
+          hostPath:
+            type: Directory
+            path: {{ include "paperless-ngx.export.hostPath" . }}
+        {{- end }}
+        {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
+        - name: trash-volume
+          {{- if .Values.trash.nfs.enabled }}
+          nfs:
+            server: {{ .Values.trash.nfs.server }}
+            path: {{ .Values.trash.nfs.path }}
+            readOnly: false
+          {{- else }}
+          hostPath:
+            type: Directory
+            path: {{ include "paperless-ngx.trash.hostPath" . }}
+        {{- end }}
+      {{- if .Values.securityContext }}
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

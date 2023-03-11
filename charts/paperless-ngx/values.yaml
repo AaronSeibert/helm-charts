@@ -10,6 +10,18 @@ image:
 nameOverride: ''
 fullnameOverride: ''
 
+controller: 
+  # -- Create a workload for this chart.
+  enabled: true
+  # -- Type of the workload object.
+  kind: Deployment
+  # -- The number of replicas.
+  replicas: 1
+  # -- Additional annotations for the controller object.
+  annotations: {}
+  # -- Additional labels for the controller object.
+  labels: {}
+
 service:
   # -- Create a service for exposing this chart.
   enabled: true
@@ -83,7 +95,7 @@ secret:
 
 persistentVolumeClaim:
   # -- Create a new persistent volume claim object.
-  create: true
+  create: false
   # -- Mount path of the persistent volume claim object.
   mountPath: /usr/src/paperless
   # -- Access mode of the persistent volume claim object.
@@ -103,9 +115,9 @@ persistentVolumeClaim:
 
 consumption:
   # -- Enable the volume mount of a [consumption directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders).
-  enabled: true
+  enabled: false
   # -- Mount path of the consumption directory inside the container.
-  mountPath: /consumption
+  mountPath: /usr/src/paperless/consume
   # -- Host path of the consumption directory outside the container.
   hostPath: ''
   nfs:
@@ -120,9 +132,9 @@ consumption:
 
 export:
   # -- Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter).
-  enabled: true
+  enabled: false
   # -- Mount path of the export directory inside the container.
-  mountPath: /export
+  mountPath: /usr/src/paperless/export
   # -- Host path of the export directory outside the container.
   hostPath: ''
   nfs:
@@ -165,7 +177,6 @@ trash:
     # -- The path to the directory
     path: ""
     # -- Mount the directory read-only. This must be false
-    readOnly: false
 
 serviceAccount:
   # -- Specify the service account used for the controller.

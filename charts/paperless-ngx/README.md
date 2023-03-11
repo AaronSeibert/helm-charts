@@ -1,6 +1,6 @@
 
 
-# paperless-ngx
+# paperless
 
 A Helm chart for Kubernetes
 
@@ -23,13 +23,13 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```console
-$ helm install paperless-ngx aaronseibert/paperless-ngx
+$ helm install paperless aaronseibert/paperless
 ```
 
 To uninstall this chart simply run the following command:
 
 ```console
-$ helm delete paperless-ngx
+$ helm delete paperless
 ```
 
 ## Values
@@ -41,6 +41,11 @@ $ helm delete paperless-ngx
 | image.pullPolicy | string | `"IfNotPresent"` | The pull policy for the controller. |
 | nameOverride | string | `""` |  |
 | fullnameOverride | string | `""` |  |
+| controller.enabled | bool | `true` | Create a workload for this chart. |
+| controller.kind | string | `"Deployment"` | Type of the workload object. |
+| controller.replicas | int | `1` | The number of replicas. |
+| controller.annotations | object | `{}` | Additional annotations for the controller object. |
+| controller.labels | object | `{}` | Additional labels for the controller object. |
 | service.enabled | bool | `true` | Create a service for exposing this chart. |
 | service.type | string | `"ClusterIP"` | The service type used. |
 | service.annotations | object | `{}` | Additional annotations for the service object. |
@@ -69,7 +74,7 @@ $ helm delete paperless-ngx
 | secret.secretKey | string | `""` | [Secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security) used when not using an existing secret. |
 | secret.annotations | object | `{}` | Additional annotations for the secret object. |
 | secret.labels | object | `{}` | Additional labels for the secret object. |
-| persistentVolumeClaim.create | bool | `true` | Create a new persistent volume claim object. |
+| persistentVolumeClaim.create | bool | `false` | Create a new persistent volume claim object. |
 | persistentVolumeClaim.mountPath | string | `"/usr/src/paperless"` | Mount path of the persistent volume claim object. |
 | persistentVolumeClaim.accessMode | string | `"ReadWriteOnce"` | Access mode of the persistent volume claim object. |
 | persistentVolumeClaim.volumeMode | string | `"Filesystem"` | Volume mode of the persistent volume claim object. |
@@ -78,15 +83,15 @@ $ helm delete paperless-ngx
 | persistentVolumeClaim.existingPersistentVolumeClaim | string | `""` | Use an existing persistent volume claim object. |
 | persistentVolumeClaim.annotations | object | `{}` | Additional annotations for the persistent volume claim object. |
 | persistentVolumeClaim.labels | object | `{}` | Additional labels for the persistent volume claim object. |
-| consumption.enabled | bool | `true` | Enable the volume mount of a [consumption directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders). |
-| consumption.mountPath | string | `"/consumption"` | Mount path of the consumption directory inside the container. |
+| consumption.enabled | bool | `false` | Enable the volume mount of a [consumption directory](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#paths-and-folders). |
+| consumption.mountPath | string | `"/usr/src/paperless/consume"` | Mount path of the consumption directory inside the container. |
 | consumption.hostPath | string | `""` | Host path of the consumption directory outside the container. |
 | consumption.nfs.enabled | bool | `false` | Enable NFS for the consumption directory |
 | consumption.nfs.server | string | `""` | The NFS server to use |
 | consumption.nfs.path | string | `""` | The path to the directory |
 | consumption.nfs.readOnly | bool | `false` | Mount the directory read-only. This must be false |
-| export.enabled | bool | `true` | Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter). |
-| export.mountPath | string | `"/export"` | Mount path of the export directory inside the container. |
+| export.enabled | bool | `false` | Enable the volume mount of an export directory for [backups](https://paperless-ngx.readthedocs.io/en/latest/administration.html#making-backups) using the [document exporter](https://paperless-ngx.readthedocs.io/en/latest/administration.html#utilities-exporter). |
+| export.mountPath | string | `"/usr/src/paperless/export"` | Mount path of the export directory inside the container. |
 | export.hostPath | string | `""` | Host path of the export directory outside the container. |
 | export.nfs.enabled | bool | `false` | Enable NFS for the export directory |
 | export.nfs.server | string | `""` | The NFS server to use |
@@ -105,7 +110,6 @@ $ helm delete paperless-ngx
 | trash.nfs.enabled | bool | `false` | Enable NFS for the trash directory |
 | trash.nfs.server | string | `""` | The NFS server to use |
 | trash.nfs.path | string | `""` | The path to the directory |
-| trash.nfs.readOnly | bool | `false` | Mount the directory read-only. This must be false |
 | serviceAccount.name | string | `""` | Specify the service account used for the controller. |
 | rbac.create | bool | `true` | Create `Role` and `RoleBinding` objects. |
 | rbac.annotations | object | `{}` | Additional annotations for the role and role binding objects. |
