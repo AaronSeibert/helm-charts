@@ -6,9 +6,9 @@ maintainers:
   - email: aaron@awseibert.net
     name: Aaron Seibert
 dependencies:
-  #- name: base
-  #version: 1.0.0
-  #repository: https://helm.seibert.family
+- name: base
+  version: 1.0.0
+  repository: https://helm.seibert.family
 - name: redis
   version: ~0.1.7
   condition: broker.redis.enabled
