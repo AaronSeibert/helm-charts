@@ -105,7 +105,7 @@ spec:
             {{- end }}
             {{- if .Values.export.enabled }}
             - name: export-volume
-              mountPath: {{ .Values.export.mountPath" | quote }}
+              mountPath: {{ .Values.export.mountPath | quote }}
             {{- end }}
             {{- if .Values.trash.enabled" }}
             - name: trash-volume
