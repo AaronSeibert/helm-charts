@@ -141,16 +141,16 @@ spec:
         {{- end }}
         {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
         - name: consumption-volume
-          {{- if .Values.consumption.nfs.enabled }}
+          {{ if .Values.consumption.nfs.enabled }}
           nfs:
             server: {{ .Values.consumption.nfs.server }}
             path: {{ .Values.consumption.nfs.path }}
             readOnly: false
-          {{- else }}
+          {{ else }}
           hostPath:
             type: Directory
             path: {{ include "paperless-ngx.consumption.hostPath" . }}
-          {{- end}}
+          {{ end}}
         {{- end }}
         {{- if eq (include "paperless-ngx.export.enabled" .) "true" }}
         - name: export-volume
