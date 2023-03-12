@@ -1,8 +1,8 @@
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
+{{- if and (.Values.persistence.enabled) (not .Values.persistence.existingClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "postgres.fullname" . "-pvc"}}
+  name: {{ template "postgres.fullname" . }}-pvc
   namespace: {{ .Release.Namespace }}
 {{- with .Values.persistence.annotations  }}
   annotations:

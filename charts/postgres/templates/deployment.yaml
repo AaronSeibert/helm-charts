@@ -61,5 +61,5 @@ spec:
       volumes:
         - name: postgresdb
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-pvc" (include "fullname" .)) }}
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-pvc" (include "postgres.fullname" .)) }}
 {{- end }}
