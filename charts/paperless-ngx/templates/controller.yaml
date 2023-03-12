@@ -139,7 +139,7 @@ spec:
             claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
             {{- end }}
         {{- end }}
-        {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
+        {{- if .Values.consumption.enabled }}
         - name: consumption-volume
           {{ if .Values.consumption.nfs.enabled }}
           nfs:
@@ -150,9 +150,9 @@ spec:
           hostPath:
             type: Directory
             path: {{ include "paperless-ngx.consumption.hostPath" . }}
-          {{ end}}
+          {{ end }}
         {{- end }}
-        {{- if eq (include "paperless-ngx.export.enabled" .) "true" }}
+        {{- if .Values.export.enabled }}
         - name: export-volume
           {{- if .Values.export.nfs.enabled }}
           nfs:
@@ -165,7 +165,7 @@ spec:
             path: {{ include "paperless-ngx.export.hostPath" . }}
           {{- end }}
         {{- end }}
-        {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
+        {{- if .Values.trash.enabled }}
         - name: trash-volume
           {{- if .Values.trash.nfs.enabled }}
           nfs:
