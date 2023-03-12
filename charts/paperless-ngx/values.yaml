@@ -94,6 +94,8 @@ certificate:
 env:
   # -- Timezone for the container.
   timezone: UTC
+  # -- The FQDN for the service. Used for PAPERLESS_URL
+  fqdn: 'paperless.domain.com'
 
 ports:
   http:

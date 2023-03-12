@@ -4,7 +4,7 @@
 
 Paperless-NGX Application - webserver component
 
-![Version: 0.1.10](https://img.shields.io/badge/Version-0.1.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square)
+![Version: 0.1.11](https://img.shields.io/badge/Version-0.1.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.2](https://img.shields.io/badge/AppVersion-1.9.2-informational?style=flat-square)
 
 ## Requirements
 
@@ -76,6 +76,7 @@ $ helm delete paperless-ngx
 | certificate.annotations | object | `{}` | Additional annotations for the certificate object. |
 | certificate.labels | object | `{}` | Additional labels for the certificate object. |
 | env.timezone | string | `"UTC"` | Timezone for the container. |
+| env.fqdn | string | `"paperless.domain.com"` | The FQDN for the service. Used for PAPERLESS_URL |
 | ports.http.enabled | bool | `true` | Enable the port inside the `Deployment` and `Service` objects. |
 | ports.http.port | int | `8000` | The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`. |
 | ports.http.nodePort | string | `nil` | The external port used if `.service.type` == `NodePort`. |
