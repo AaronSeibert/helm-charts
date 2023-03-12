@@ -40,8 +40,3 @@ broker:
 # @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml)
 webserver:
   enabled: true
-  image:
-    tag: 1.9.2
-  env:
-    - name: "TZ"
-      value: "America/New_York"
