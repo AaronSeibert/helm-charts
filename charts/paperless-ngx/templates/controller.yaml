@@ -63,7 +63,7 @@ spec:
             {{- end }}
             {{- if .Values.global.broker.redis.enabled }}
             - name: PAPERLESS_REDIS
-              value: redis://{{ .Values.global.broker.redis.host }}:{{ .Values.global.broker.redis.port }}
+              value: "redis://{{ .Values.global.broker.redis.host }}:{{ .Values.global.broker.redis.port }}"
             {{- end}}
             {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
             - name: PAPERLESS_CONSUMPTION_DIR
