@@ -61,10 +61,108 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
+Consumption host path
+*/}}
+{{- define "paperless-ngx.consumption.hostPath" -}}
+{{- if .Values.consumption.enabled }}
+{{- .Values.consumption.hostPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Consumption mount path
+*/}}
+{{- define "paperless-ngx.consumption.mountPath" -}}
+{{- if .Values.consumption.enabled }}
+{{- default "/consumption" .Values.consumption.mountPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Consumption enabled
+*/}}
+{{- define "paperless-ngx.consumption.enabled" -}}
+{{- if .Values.consumption.enabled }}
+{{- if and (include "paperless-ngx.consumption.hostPath" .) (include "paperless.consumption.mountPath" .) }}
+{{- printf "true" }}
+{{- else }}
+{{- printf "false" }}
+{{- end }}
+{{- else }}
+{{- printf "false" }}
+{{- end }}
+{{- end }}
+
+{{/*
+Export host path
+*/}}
+{{- define "paperless-ngx.export.hostPath" -}}
+{{- if .Values.export.enabled }}
+{{- .Values.export.hostPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Export mount path
+*/}}
+{{- define "paperless-ngx.export.mountPath" -}}
+{{- if .Values.export.enabled }}
+{{- default "/export" .Values.export.mountPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Export enabled
+*/}}
+{{- define "paperless-ngx.export.enabled" -}}
+{{- if .Values.export.enabled }}
+{{- if and (include "paperless-ngx.export.hostPath" .) (include "paperless-ngx.export.mountPath" .) }}
+{{- printf "true" }}
+{{- else }}
+{{- printf "false" }}
+{{- end }}
+{{- else }}
+{{- printf "false" }}
+{{- end }}
+{{- end }}
+
+{{/*
 Export command
 */}}
 {{- define "paperless-ngx.export.command" -}}
 {{ printf "kubectl exec -it -n %s deploy/%s -- document_exporter %s" .Release.Namespace (include "paperless-ngx.fullname" . ) (include "paperless-ngx.export.mountPath" . ) }}
+{{- end }}
+
+{{/*
+Trash host path
+*/}}
+{{- define "paperless-ngx.trash.hostPath" -}}
+{{- if .Values.trash.enabled }}
+{{- .Values.trash.hostPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Trash mount path
+*/}}
+{{- define "paperless-ngx.trash.mountPath" -}}
+{{- if .Values.trash.enabled }}
+{{- default "/export" .Values.trash.mountPath }}
+{{- end }}
+{{- end }}
+
+{{/*
+Trash enabled
+*/}}
+{{- define "paperless-ngx.trash.enabled" -}}
+{{- if .Values.trash.enabled }}
+{{- if and (include "paperless-ngx.trash.hostPath" .) (include "paperless.trash.mountPath" .) }}
+{{- printf "true" }}
+{{- else }}
+{{- printf "false" }}
+{{- end }}
+{{- else }}{{- printf "false" }}
+{{- end }}
 {{- end }}
 
 {{/*
