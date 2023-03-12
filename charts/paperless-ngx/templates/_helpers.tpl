@@ -116,7 +116,7 @@ Export enabled
 */}}
 {{- define "paperless-ngx.export.enabled" -}}
 {{- if .Values.export.enabled }}
-{{- if and (include "paperless-ngx.export.hostPath" .) (include "paperless.export.mountPath" .) }}
+{{- if and (include "paperless-ngx.export.hostPath" .) (include "paperless-ngx.export.mountPath" .) }}
 {{- printf "true" }}
 {{- else }}
 {{- printf "false" }}
@@ -130,7 +130,7 @@ Export enabled
 Export command
 */}}
 {{- define "paperless-ngx.export.command" -}}
-{{ printf "kubectl exec -it -n %s deploy/%s -- document_exporter %s" .Release.Namespace (include "paperless-ngx.fullname" . ) (include "paperless.export.mountPath" . ) }}
+{{ printf "kubectl exec -it -n %s deploy/%s -- document_exporter %s" .Release.Namespace (include "paperless-ngx.fullname" . ) (include "paperless-ngx.export.mountPath" . ) }}
 {{- end }}
 
 {{/*
