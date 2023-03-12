@@ -372,6 +372,20 @@ entries:
   paperless-ngx:
   - apiVersion: v2
     appVersion: 1.9.2
+    created: "2023-03-12T03:39:08.543982237Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family
+      version: ~1.0.4
+    description: Paperless-NGX Application - webserver component
+    digest: 85ca835c8b3dc6877881a5247aaecd5ad352a9c04cbc704c4056137658be92d5
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-ngx-0.1.9/paperless-ngx-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.9.2
     created: "2023-03-11T20:39:10.225212365Z"
     dependencies:
     - name: base
@@ -708,4 +722,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-11T20:39:10.225480764Z"
+generated: "2023-03-12T03:39:08.544139038Z"
