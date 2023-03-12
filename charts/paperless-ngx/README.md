@@ -75,7 +75,7 @@ $ helm delete paperless-ngx
 | certificate.issuerRef.name | string | `""` | Name of the referenced certificate issuer. |
 | certificate.annotations | object | `{}` | Additional annotations for the certificate object. |
 | certificate.labels | object | `{}` | Additional labels for the certificate object. |
-| env[0] | object | `{"name":"TZ","value":"UTC"}` | Timezone for the container. |
+| env.timezone | string | `"UTC"` | Timezone for the container. |
 | ports.http.enabled | bool | `true` | Enable the port inside the `Deployment` and `Service` objects. |
 | ports.http.port | int | `8000` | The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`. |
 | ports.http.nodePort | string | `nil` | The external port used if `.service.type` == `NodePort`. |

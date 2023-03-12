@@ -93,8 +93,7 @@ certificate:
 
 env:
   # -- Timezone for the container.
-  - name: TZ
-    value: UTC
+  timezone: UTC
 
 ports:
   http:

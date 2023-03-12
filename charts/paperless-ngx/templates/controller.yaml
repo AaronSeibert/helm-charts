@@ -45,27 +45,21 @@ spec:
             {{- end }}
             {{- end }}
           env:
-            {{- range $i, $val := .Values.env }}
-            - name: {{ $val.name | quote }}
-              value: {{ $val.value | quote }}
-            {{- if eq $val.name "TZ" }}
             - name: PAPERLESS_TIME_ZONE
-              value: {{ $val.value | quote }}
-            {{- end }}
-            {{- end }}
+              value: {{ .Values.env.timezone | quote }}
             {{- if .Values.global.database.postgres.enabled }}
             - name: PAPERLESS_DBENGINE
               value: postgres
             - name: PAPERLESS_DBHOST
-              value: {{ .Values.global.database.postgres.host }}
+              value: {{ .Values.global.database.postgres.host | quote }}
             - name: PAPERLESS_DBPORT
-              value: {{ .Values.global.database.postgres.port }}
+              value: {{ .Values.global.database.postgres.port | quote }}
             - name: PAPERLESS_DBNAME
-              value: {{ .Values.global.database.postgres.name }}
+              value: {{ .Values.global.database.postgres.name | quote }}
             - name: PAPERLESS_DBUSER
-              value: {{ .Values.global.database.postgres.user }}
+              value: {{ .Values.global.database.postgres.user | quote }}
             - name: PAPERLESS_DBPASS
-              value: {{ .Values.global.database.postgres.password }}
+              value: {{ .Values.global.database.postgres.password | quote }}
             {{- end }}
             {{- if .Values.global.broker.redis.enabled }}
             - name: PAPERLESS_REDIS
