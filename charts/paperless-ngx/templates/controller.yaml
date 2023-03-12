@@ -99,17 +99,17 @@ spec:
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}/media
               subPath: media
             {{- end}}
-            {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
+            {{- if .Values.consumption.enabled  }}
             - name: consumption-volume
-              mountPath: {{ include "paperless-ngx.consumption.mountPath" . }}
+              mountPath: {{ .Values.consumption.mountPath | quote }}
             {{- end }}
-            {{- if eq (include "paperless-ngx.export.enabled" .) "true" }}
+            {{- if .Values.export.enabled }}
             - name: export-volume
-              mountPath: {{ include "paperless-ngx.export.mountPath" . }}
+              mountPath: {{ .Values.export.mountPath" | quote }}
             {{- end }}
-            {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
+            {{- if .Values.trash.enabled" }}
             - name: trash-volume
-              mountPath: {{ include "paperless-ngx.trash.mountPath" . }}
+              mountPath: {{ .Values.trash.mountPath | quote }}
             {{- end }}
           startupProbe:
             httpGet:
