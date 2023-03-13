@@ -48,9 +48,6 @@ $ helm delete paperless
 | global.database.postgres.password | string | `"paperless"` | db password |
 | global.database.postgres.port | string | `""` | db port |
 | global.database.postgres.user | string | `"paperless"` | db user |
-| broker | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml) | Configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key. |
-| database | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml) | Configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key. |
-| webserver | object | See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml) | Enable and configure [paperless-ngx subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx) under this key. |
 | broker.fullnameOverride | string | `""` |  |
 | broker.image.pullPolicy | string | `"IfNotPresent"` |  |
 | broker.image.repository | string | `"redis"` |  |
