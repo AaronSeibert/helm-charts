@@ -1,0 +1,15 @@
+dependencies:
+- name: base
+  repository: https://helm.seibert.family
+  version: 1.0.4
+- name: redis
+  repository: https://helm.seibert.family
+  version: 0.1.9
+- name: postgres
+  repository: https://helm.seibert.family
+  version: 0.1.17
+- name: paperless-ngx
+  repository: https://helm.seibert.family
+  version: 0.1.19
+digest: sha256:9c479a95830db1a967c5427d89d11bd288148673ffbae9cc233715c23ab1fb6f
+generated: "2023-03-12T22:29:32.897553-04:00"
