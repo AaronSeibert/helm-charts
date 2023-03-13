@@ -115,15 +115,24 @@ spec:
             httpGet:
               path: /
               port: http
+              httpHeaders:
+                - name: Host
+                  value: {{ .Values.env.fqdn | quote }}
             failureThreshold: 30
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /
+              httpHeaders:
+                - name: Host
+                  value: {{ .Values.env.fqdn | quote }}
               port: http
           readinessProbe:
             httpGet:
               path: /
+              httpHeaders:
+                - name: Host
+                  value: {{ .Values.env.fqdn | quote }}
               port: http
           resources: {{ if not .Values.resources -}}{}{{- end }}
             {{- if .Values.resources }}
