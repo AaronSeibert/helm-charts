@@ -67,9 +67,9 @@ spec:
             - name: PAPERLESS_REDIS
               value: "redis://{{ .Values.global.broker.redis.host }}:{{ .Values.global.broker.redis.port }}"
             {{- end}}
-            {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
+            {{- .Values.consumption.enabled }}
             - name: PAPERLESS_CONSUMPTION_DIR
-              value: {{ include "paperless-ngx.consumption.mountPath" . }}
+              value: {{ .Values.consumption.mountPath }}
             {{- if .Values.consumption.nfs.enabled }}
             - name: PAPERLESS_CONSUMER_POLLING
               value: 600 # 10 minutes
