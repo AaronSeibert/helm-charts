@@ -26,17 +26,12 @@ global:
       # -- redis port
       port: ''
 
-database:
-  # -- Configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key.
-  # @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml)
-  postgres:
-
-broker:
-  # -- Configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key.
-  # @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml)
-  redis:
-
+# -- Configure [postgres subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres) under this key.
+# @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/postgres/values.yaml)
+database: {}
+# -- Configure [redis subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis) under this key.
+# @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/redis/values.yaml)
+broker: {}
 # -- Enable and configure [paperless-ngx subchart](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx) under this key.
 # @default -- See [values.yaml](https://github.com/AaronSeibert/helm-charts/tree/main/charts/paperless-ngx/values.yaml)
-webserver:
-  enabled: true
+webserver: {}
