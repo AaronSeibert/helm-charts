@@ -3,7 +3,7 @@ apiVersion: v2
 name: paperless
 type: application
 description: An umbrella chart for Paperless-NGX.
-version: 0.1.25
+version: 0.1.26
 appVersion: "1.9.2"
 maintainers:
   - email: aaron@awseibert.net
