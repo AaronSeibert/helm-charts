@@ -48,7 +48,7 @@ spec:
             - name: PAPERLESS_TIME_ZONE
               value: {{ .Values.env.timezone | quote }}
             - name: PAPERLESS_URL
-              value: {{ .Values.env.fqdn | quote }}
+              value: "https://{{ .Values.env.fqdn }}"
             {{- if .Values.global.database.postgres.enabled }}
             - name: PAPERLESS_DBENGINE
               value: postgres
