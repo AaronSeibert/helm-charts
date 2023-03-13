@@ -11,19 +11,19 @@ maintainers:
 dependencies:
 - name: base
   version: 1.0.4
-  repository: https://helm.seibert.family
+  repository: file://../base
 - name: redis
   version: 0.1.9
   condition: global.broker.redis.enabled
-  repository: https://helm.seibert.family
+  repository: file://../redis
   alias: broker
 - name: postgres
   version: 0.1.17
-  repository: https://helm.seibert.family
+  repository: file://../postgres
   condition: global.database.postgres.enabled
   alias: database
 - name: paperless-ngx
-  version: 0.1.22
-  repository: https://helm.seibert.family
+  version: 0.1.23
+  repository: file://../paperless-ngx
   alias: webserver
   condition: webserver.enabled

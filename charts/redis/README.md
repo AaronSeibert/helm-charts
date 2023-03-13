@@ -36,21 +36,21 @@ $ helm delete redis
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| replicaCount | int | `1` |  |
-| image.repository | string | `"redis"` |  |
+| fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"redis"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
-| fullnameOverride | string | `""` |  |
+| persistence.enabled | bool | `false` |  |
 | podAnnotations | object | `{}` |  |
-| service.type | string | `"ClusterIP"` |  |
+| replicaCount | int | `1` |  |
+| resources | object | `{}` |  |
+| service.name | string | `"redis"` |  |
 | service.port | int | `6379` |  |
 | service.protocol | string | `"TCP"` |  |
 | service.targetPort | string | `"redis"` |  |
-| service.name | string | `"redis"` |  |
-| persistence.enabled | bool | `false` |  |
-| resources | object | `{}` |  |
+| service.type | string | `"ClusterIP"` |  |
 
 ## License
 
