@@ -70,6 +70,10 @@ spec:
             {{- if eq (include "paperless-ngx.consumption.enabled" .) "true" }}
             - name: PAPERLESS_CONSUMPTION_DIR
               value: {{ include "paperless-ngx.consumption.mountPath" . }}
+            {{- if .Values.consumption.nfs.enabled }}
+            - name: PAPERLESS_CONSUMER_POLLING
+              value: 600 # 10 minutes
+            {{- end }}
             {{- end }}
             {{- if eq (include "paperless-ngx.trash.enabled" .) "true" }}
             - name: PAPERLESS_TRASH_DIR
