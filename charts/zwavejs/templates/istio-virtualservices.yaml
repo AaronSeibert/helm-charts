@@ -1,0 +1,17 @@
+{{- if and .Values.istio.enabled .Values.istio.virtualservice.create -}}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: zwavejs
+spec:
+  gateways:
+    - zwavejs-gateway
+  hosts:
+    - {{ .Values.global.fqdn }}
+  http:
+    - route:
+      - destination:
+          host: zwave-zwavejs
+          port:
+            number: 8091
+{{- end }}
