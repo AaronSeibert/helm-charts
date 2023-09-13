@@ -3,7 +3,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: zwavejs-gateway
+  name: {{ include "zwavejs.fullname" . }}
 spec:
   selector:
       istio: {{ .Values.istio.gateway.selector.istio }}

@@ -2,16 +2,16 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: zwavejs
+  name: {{ include "zwavejs.fullname" . }}
 spec:
   gateways:
-    - zwavejs-gateway
+    - {{ include "zwavejs.fullname" . }}
   hosts:
     - {{ .Values.global.fqdn }}
   http:
     - route:
       - destination:
-          host: zwave-zwavejs
+          host: {{ include "zwavejs.fullname" . }}
           port:
             number: 8091
 {{- end }}
