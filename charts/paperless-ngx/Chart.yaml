@@ -7,4 +7,4 @@ version: 0.1.23
 dependencies:
 - name: base
   version: 1.0.4
-  repository: file://../base
+  repository: https://helm.seibert.family/
