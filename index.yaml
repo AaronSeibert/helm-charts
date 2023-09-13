@@ -55,6 +55,38 @@ entries:
   paperless:
   - apiVersion: v2
     appVersion: 1.9.2
+    created: "2023-09-13T14:25:14.561444158Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    - alias: broker
+      condition: global.broker.redis.enabled
+      name: redis
+      repository: https://helm.seibert.family/
+      version: 0.1.9
+    - alias: database
+      condition: global.database.postgres.enabled
+      name: postgres
+      repository: https://helm.seibert.family/
+      version: 0.1.17
+    - alias: webserver
+      condition: webserver.enabled
+      name: paperless-ngx
+      repository: https://helm.seibert.family/
+      version: 0.1.22
+    description: An umbrella chart for Paperless-NGX.
+    digest: 99855215f37fba897f04d53ad48dce8cd29a485f36ef0b6ab9e2030160480dd7
+    maintainers:
+    - email: aaron@awseibert.net
+      name: Aaron Seibert
+    name: paperless
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.30/paperless-0.1.30.tgz
+    version: 0.1.30
+  - apiVersion: v2
+    appVersion: 1.9.2
     created: "2023-03-13T14:54:02.827741667Z"
     dependencies:
     - name: base
@@ -861,6 +893,16 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "15.2"
+    created: "2023-09-13T14:25:14.739360446Z"
+    description: Postgres Chart
+    digest: 658e05a9fc3f63565f96555eaaeeac3115996690ea74d9fc39c2556f9dc11c15
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/postgres-0.1.18/postgres-0.1.18.tgz
+    version: 0.1.18
+  - apiVersion: v2
+    appVersion: "15.2"
     created: "2023-03-12T03:58:35.270733252Z"
     description: Postgres Chart
     digest: b05eb1cc176c1a17ea5633531a2dadeb22c3afad89af035d0f512e2ca5adaf91
@@ -1110,4 +1152,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-13T14:54:02.828075867Z"
+generated: "2023-09-13T14:25:14.739752951Z"
