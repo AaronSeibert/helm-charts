@@ -1152,4 +1152,19 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-13T14:25:14.739752951Z"
+  zwavejs:
+  - apiVersion: v2
+    appVersion: "8"
+    created: "2023-09-13T14:28:57.824312575Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    description: A Helm chart for Kubernetes
+    digest: 217a58ea54bf92b5c3091e70ba6856f4d07f949ea7df1017beb819d14ebc4ecd
+    name: zwavejs
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
+    version: 0.2.0
+generated: "2023-09-13T14:28:57.824635981Z"
