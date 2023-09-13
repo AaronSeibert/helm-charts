@@ -89,7 +89,7 @@ istio:
         httpsRedirect: true
     - name: https
       number: 443
-      protocol: http
+      protocol: https
       tls:
         mode: SIMPLE
         credentialName: zwavejs-cert
