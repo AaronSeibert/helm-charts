@@ -8,7 +8,6 @@ spec:
     secretName: zwavejs-cert
     duration: {{ .Values.certificate.duration }}
     renewBefore: {{ .Values.certificate.renewBefore }}
-    isCA: false
     privateKey:
         algorithm: RSA
         size: 2048
