@@ -3,8 +3,8 @@ appVersion: "8"
 description: A Helm chart for Kubernetes
 name: zwavejs
 type: application
-version: 0.7.0
+version: 0.7.1
 dependencies:
 - name: base
-  version: 1.0.4
+  version: 1.0.5
   repository: https://helm.seibert.family/
