@@ -36,17 +36,6 @@ $ helm delete paperless-ngx
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| global.broker | object | `{"redis":{"enabled":false,"host":"","port":""}}` | broker connection properties |
-| global.broker.redis.enabled | bool | `false` | enable/disable redis support |
-| global.broker.redis.host | string | `""` | redis host |
-| global.broker.redis.port | string | `""` | redis port |
-| global.database | object | `{"postgres":{"enabled":false,"host":"","name":"paperless","password":"paperless","port":"","user":"paperless"}}` | database connection properties |
-| global.database.postgres.enabled | bool | `false` | enable/disable postgres support |
-| global.database.postgres.host | string | `""` | db host |
-| global.database.postgres.name | string | `"paperless"` | db name |
-| global.database.postgres.password | string | `"paperless"` | db password |
-| global.database.postgres.port | string | `""` | db port |
-| global.database.postgres.user | string | `"paperless"` | db user |
 | affinity | object | `{}` | Pod-level affinity. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling). |
 | certificate.annotations | object | `{}` | Additional annotations for the certificate object. |
 | certificate.create | bool | `false` | Create an Certificate object for the exposed chart. |
@@ -84,6 +73,17 @@ $ helm delete paperless-ngx
 | export.nfs.readOnly | bool | `false` | Mount the directory read-only. This must be false |
 | export.nfs.server | string | `""` | The NFS server to use |
 | fullnameOverride | string | `""` |  |
+| global.broker | object | `{"redis":{"enabled":false,"host":"","port":""}}` | broker connection properties |
+| global.broker.redis.enabled | bool | `false` | enable/disable redis support |
+| global.broker.redis.host | string | `""` | redis host |
+| global.broker.redis.port | string | `""` | redis port |
+| global.database | object | `{"postgres":{"enabled":false,"host":"","name":"paperless","password":"paperless","port":"","user":"paperless"}}` | database connection properties |
+| global.database.postgres.enabled | bool | `false` | enable/disable postgres support |
+| global.database.postgres.host | string | `""` | db host |
+| global.database.postgres.name | string | `"paperless"` | db name |
+| global.database.postgres.password | string | `"paperless"` | db password |
+| global.database.postgres.port | string | `""` | db port |
+| global.database.postgres.user | string | `"paperless"` | db user |
 | image.pullPolicy | string | `"IfNotPresent"` | The pull policy for the controller. |
 | image.repository | string | `"ghcr.io/paperless-ngx/paperless-ngx"` | The repository to pull the image from. |
 | image.tag | string | `.Chart.AppVersion` | The docker tag, if left empty chart's appVersion will be used. |
