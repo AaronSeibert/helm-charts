@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   base:
   - apiVersion: v2
+    created: "2023-09-14T01:25:43.530818297Z"
+    description: Base Helm Chart
+    digest: 15e7f302309975c4a0f4297bed306e029f316f57f722a7b34ed040ee6675b248
+    home: https://helm.seibert.family
+    keywords:
+    - library-chart
+    maintainers:
+    - email: aaron@awseibert.net
+      name: aaronseibert
+    name: base
+    sources:
+    - https://github.com/aaronseibert/helm-charts
+    type: library
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/base-1.0.5/base-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
     created: "2023-03-11T19:30:25.90898112Z"
     description: Base Helm Chart
     digest: 69fe53b7388b801be31031bbcf2d175c7a227ecb4be8e1e093056edbdc67e999
@@ -53,6 +70,38 @@ entries:
     - https://github.com/AaronSeibert/helm-charts/releases/download/base-1.0.1/base-1.0.1.tgz
     version: 1.0.1
   paperless:
+  - apiVersion: v2
+    appVersion: 1.9.2
+    created: "2023-09-14T01:25:43.709190637Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    - alias: broker
+      condition: global.broker.redis.enabled
+      name: redis
+      repository: https://helm.seibert.family/
+      version: 0.1.9
+    - alias: database
+      condition: global.database.postgres.enabled
+      name: postgres
+      repository: https://helm.seibert.family/
+      version: 0.1.18
+    - alias: webserver
+      condition: webserver.enabled
+      name: paperless-ngx
+      repository: https://helm.seibert.family/
+      version: 0.1.22
+    description: An umbrella chart for Paperless-NGX.
+    digest: f013e1ed6ea743ae5cf5584e573507f3484530a65160ce735f7515835617954c
+    maintainers:
+    - email: aaron@awseibert.net
+      name: Aaron Seibert
+    name: paperless
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.31/paperless-0.1.31.tgz
+    version: 0.1.31
   - apiVersion: v2
     appVersion: 1.9.2
     created: "2023-09-13T14:25:14.561444158Z"
@@ -628,6 +677,20 @@ entries:
   paperless-ngx:
   - apiVersion: v2
     appVersion: 1.9.2
+    created: "2023-09-14T01:25:43.859597053Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    description: Paperless-NGX Application - webserver component
+    digest: 918e96d08a0612083adc506c343ea8c0a13b22f8e619efee108784be44c77ab2
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-ngx-0.1.24/paperless-ngx-0.1.24.tgz
+    version: 0.1.24
+  - apiVersion: v2
+    appVersion: 1.9.2
     created: "2023-03-13T14:49:06.879393297Z"
     dependencies:
     - name: base
@@ -893,6 +956,16 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "15.2"
+    created: "2023-09-14T01:25:43.988007057Z"
+    description: Postgres Chart
+    digest: 2dfe3c5b3ecdeab65918736faf7e3057890d2149238879a350e77f6b7356d3ba
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/postgres-0.1.19/postgres-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
+    appVersion: "15.2"
     created: "2023-09-13T14:25:14.739360446Z"
     description: Postgres Chart
     digest: 658e05a9fc3f63565f96555eaaeeac3115996690ea74d9fc39c2556f9dc11c15
@@ -1064,6 +1137,16 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: 7.0.9
+    created: "2023-09-14T01:25:44.121858963Z"
+    description: redis chart for applications with redis as a dependency
+    digest: d5c8b49408628824c85af4453011e80f153445faab68b37e68b2eb942d11e485
+    name: redis
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.10/redis-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
+    appVersion: 7.0.9
     created: "2023-03-11T18:48:43.695880556Z"
     description: redis chart for applications with redis as a dependency
     digest: b6c039402f71a1f92dfdcced4d6b00d903bcc70ff9271e6aec9857d8f864b0e8
@@ -1155,6 +1238,20 @@ entries:
   zwavejs:
   - apiVersion: v2
     appVersion: "8"
+    created: "2023-09-14T01:25:44.281291249Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    description: A Helm chart for Kubernetes
+    digest: edaced1c5449eac88b3865555e3dacc04b86f4281a3a8aa5ea25ad1fb64e8462
+    name: zwavejs
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.7.1/zwavejs-0.7.1.tgz
+    version: 0.7.1
+  - apiVersion: v2
+    appVersion: "8"
     created: "2023-09-13T18:20:12.67041419Z"
     dependencies:
     - name: base
@@ -1237,4 +1334,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2023-09-13T18:20:12.670757194Z"
+generated: "2023-09-14T01:25:44.282005562Z"
