@@ -10,20 +10,20 @@ maintainers:
     name: Aaron Seibert
 dependencies:
 - name: base
-  version: 1.0.6
+  version: 1.0.5
   repository: https://helm.seibert.family/
 - name: redis
-  version: 0.1.10
+  version: 0.1.9
   condition: global.broker.redis.enabled
   repository: https://helm.seibert.family/
   alias: broker
 - name: postgres
-  version: 0.1.18
+  version: 0.1.17
   repository: https://helm.seibert.family/
   condition: global.database.postgres.enabled
   alias: database
 - name: paperless-ngx
-  version: 0.1.24
+  version: 0.1.23
   repository: https://helm.seibert.family/
   alias: webserver
   condition: webserver.enabled
