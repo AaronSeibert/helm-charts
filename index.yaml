@@ -89,6 +89,20 @@ entries:
   homepage:
   - apiVersion: v2
     appVersion: 0.8.4
+    created: "2023-12-27T21:39:06.843520969Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: A Helm chart for Kubernetes
+    digest: e35f30e19e4ae9c5040199202fe5d9e6611a0df66755436538f840c4c5fdba92
+    name: homepage
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/homepage-0.1.18/homepage-0.1.18.tgz
+    version: 0.1.18
+  - apiVersion: v2
+    appVersion: 0.8.4
     created: "2023-12-27T21:33:04.650849912Z"
     dependencies:
     - name: base
@@ -1610,4 +1624,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2023-12-27T21:33:04.651211844Z"
+generated: "2023-12-27T21:39:06.843850139Z"
