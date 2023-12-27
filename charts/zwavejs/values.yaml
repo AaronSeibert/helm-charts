@@ -55,47 +55,6 @@ ingress:
   #    hosts
   #      - chart-example.local
 
-ingressRoute:
-  # -- Create an IngressRoute object for exposing this chart.
-  create: false
-  # -- List of [entry points](https://doc.traefik.io/traefik/routing/routers/#entrypoints) on which the ingress route will be available.
-  entryPoints: []
-  # -- List of [middleware objects](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middleware) for the ingress route.
-  middlewares:
-    - name: stripprefix-websocket
-  # -- Use an existing secret containing the TLS certificate.
-  tlsSecretName: ''
-  # -- Additional annotations for the ingress route object.
-  annotations: {}
-  # -- Additional labels for the ingress route object.
-  labels: {}
-
-istio:
-  # -- Enable istio
-  enable: false
-  # -- Gateway configuration
-  gateway:
-    # -- Enable the Gateway
-    create: true
-    # -- Define the Gateway selector
-    selector:
-      istio: 'ingressgateway'
-    # -- Servers Config
-    servers:
-    - name: http
-      number: 80
-      protocol: http
-      tls:
-        httpsRedirect: true
-    - name: https
-      number: 443
-      protocol: https
-      tls:
-        mode: SIMPLE
-        credentialName: zwavejs-cert
-  virtualservice:
-    create: true
-
 certificate:
   # -- Create an Certificate object for the exposed chart.
   create: false
