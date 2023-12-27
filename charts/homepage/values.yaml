@@ -124,7 +124,7 @@ serviceAccount:
 
 rbac:
   # -- Create `Role` and `RoleBinding` objects.
-  create: false
+  create: true
   # -- Additional annotations for the role and role binding objects.
   annotations: {}
   # -- Additional labels for the role and role binding objects.
