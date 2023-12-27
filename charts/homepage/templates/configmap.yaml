@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ include "homepage.fullname" . }}
     {{- include "homepage.labels" . | nindent 4 }}
-  {{- with .Values.config.data }}
   data:
+    {{- with .Values.config.data }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
