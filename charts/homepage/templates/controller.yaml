@@ -101,7 +101,7 @@ spec:
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
             {{- end }}
-       volumes:
+      volumes:
         - name: {{ printf "%s-config" (include "homepage.fullname" .) }}
           configMap:
             name: {{ printf "%s-config" (include "homepage.fullname" .) }}
