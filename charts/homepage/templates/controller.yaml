@@ -77,7 +77,7 @@ spec:
           volumes:
             - name: homepage-config
               configMap:
-                name: homepage
+                name: {{ printf "%s-config" (include "homepage.fullname" .) }}
             - name: logs
               emptyDir: {}
           startupProbe:
