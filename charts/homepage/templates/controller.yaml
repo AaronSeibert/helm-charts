@@ -75,7 +75,7 @@ spec:
             - mountPath: /app/config/logs
               name: logs
           volumes:
-            - name: homepage-config
+            - name: {{ printf "%s-config" (include "homepage.fullname" .) }}
               configMap:
                 name: {{ printf "%s-config" (include "homepage.fullname" .) }}
             - name: logs
