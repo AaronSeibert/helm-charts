@@ -74,6 +74,12 @@ spec:
               subPath: widgets.yaml
             - mountPath: /app/config/logs
               name: logs
+          volumes:
+            - name: homepage-config
+              configMap:
+                name: homepage
+            - name: logs
+              emptyDir: {}
           startupProbe:
             httpGet:
               path: /
@@ -101,23 +107,7 @@ spec:
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
             {{- end }}
-      volumes:
-        {{- if eq (include "base.persistence.enabled" .) "true" }}
-        - name: storage-volume
-          persistentVolumeClaim:
-            {{- if and .Values.persistentVolumeClaim.create (empty .Values.persistentVolumeClaim.existingPersistentVolumeClaim) }}
-            claimName: {{ printf "%s-storage" (include "homepage.fullname" . ) }}
-            {{- else }}
-            claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
-            {{- end }}
-        {{- end }}
       {{- if .Values.securityContext }}
-      volumes:
-        - name: {{ printf "%s-config" (include "homepage.fullname" .) }}
-          configMap:
-            name: {{ printf "%s-config" (include "homepage.fullname" .) }}
-        - name: logs
-          emptyDir: {}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
       {{- end }}
