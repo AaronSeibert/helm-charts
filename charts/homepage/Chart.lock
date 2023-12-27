@@ -1,0 +1,6 @@
+dependencies:
+- name: base
+  repository: https://helm.seibert.family/
+  version: 1.0.6
+digest: sha256:68106932965e44e78912ba179119a7bf468014336bac071996e2594131af6187
+generated: "2023-12-27T14:24:15.307241-05:00"

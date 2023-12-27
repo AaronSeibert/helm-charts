@@ -9,4 +9,3 @@ metadata:
   data:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-{{- end -}}
