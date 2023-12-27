@@ -13,16 +13,36 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 rules:
-  - apiGroups: ['']
-    verbs: ['list']
+  - apiGroups:
+      - ""
     resources:
+      - namespaces
       - pods
-  - apiGroups: ['apps']
-    verbs: ['get']
+      - nodes
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - extensions
+      - networking.k8s.io
     resources:
-      - deployments
-  - apiGroups: ['']
-    verbs: ['create']
+      - ingresses
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - traefik.containo.us
     resources:
-      - pods/exec
+      - ingressroutes
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - metrics.k8s.io
+    resources:
+      - nodes
+      - pods
+    verbs:
+      - get
+      - list
 {{- end -}}
