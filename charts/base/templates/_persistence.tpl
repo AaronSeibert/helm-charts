@@ -48,7 +48,7 @@ Persistence object specification
 */}}
 {{- define "base.persistence.spec" -}}
 accessModes:
-  - {{ default "ReadWriteOnce" .Values.persistentVolumeClaim.accessMode }}
+  - {{ default "ReadWriteMany" .Values.persistentVolumeClaim.accessMode }}
 resources:
   requests:
     storage: {{ default "1Gi" .Values.persistentVolumeClaim.size }}
