@@ -90,6 +90,39 @@ spec:
             {{- end }}
         {{- end }}
       {{- if .Values.securityContext }}
+      volumeMounts:
+        - mountPath: /app/config/custom.js
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subpath: custom.js
+        - mountPath: /app/config/custom.css
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: custom.css
+        - mountPath: /app/config/bookmarks.yaml
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: bookmarks.yaml
+        - mountPath: /app/config/docker.yaml
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: docker.yaml
+        - mountPath: /app/config/kubernetes.yaml
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: kubernetes.yaml
+        - mountPath: /app/config/services.yaml
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: services.yaml
+        - mountPath: /app/config/settings.yaml
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: settings.yaml
+        - mountPath: /app/config/widgets.yaml
+          name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          subPath: widgets.yaml
+        - mountPath: /app/config/logs
+          name: logs
+      volumes:
+        - name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          configMap:
+            name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+        - name: logs
+          emptyDir: {}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
       {{- end }}
