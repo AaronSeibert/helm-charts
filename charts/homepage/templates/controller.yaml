@@ -74,12 +74,6 @@ spec:
               subPath: widgets.yaml
             - mountPath: /app/config/logs
               name: logs
-          volumes:
-            - name: {{ printf "%s-config" (include "homepage.fullname" .) }}
-              configMap:
-                name: {{ printf "%s-config" (include "homepage.fullname" .) }}
-            - name: logs
-              emptyDir: {}
           startupProbe:
             httpGet:
               path: /
@@ -107,6 +101,12 @@ spec:
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
             {{- end }}
+       volumes:
+        - name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+          configMap:
+            name: {{ printf "%s-config" (include "homepage.fullname" .) }}
+        - name: logs
+          emptyDir: {}
       {{- if .Values.securityContext }}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
