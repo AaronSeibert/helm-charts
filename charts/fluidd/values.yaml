@@ -68,16 +68,7 @@ ports:
     # -- Enable the port inside the `Deployment` and `Service` objects.
     enabled: true
     # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
-    port: 8091
-    # -- The external port used if `.service.type` == `NodePort`.
-    nodePort: null
-    # -- The protocol used for the service.
-    protocol: TCP
-  websocket:
-    # -- Enable the port inside the `Deployment` and `Service` objects.
-    enabled: true
-    # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
-    port: 3000
+    port: 80
     # -- The external port used if `.service.type` == `NodePort`.
     nodePort: null
     # -- The protocol used for the service.
