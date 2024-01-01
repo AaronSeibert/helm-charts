@@ -89,6 +89,20 @@ entries:
   fluidd:
   - apiVersion: v2
     appVersion: v1.27.1
+    created: "2024-01-01T00:31:28.503886322Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Fluidd Helm Chart
+    digest: 0f4b2c96f11f287967c078dc33718c01ce6d42d75f5eb93c5c92d3095a82e2dd
+    name: fluidd
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/fluidd-0.1.4/fluidd-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: v1.27.1
     created: "2024-01-01T00:08:55.535474096Z"
     dependencies:
     - name: base
@@ -1723,4 +1737,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-01T00:08:55.536154696Z"
+generated: "2024-01-01T00:31:28.504187505Z"
