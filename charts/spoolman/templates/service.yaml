@@ -19,7 +19,7 @@ spec:
     {{- if .enabled }}
     - name: http
       port: {{ .port }}
-      targetPort: http
+      targetPort: {{ .port }}
       {{- if and (eq $.Values.service.type "NodePort") .nodePort }}
       nodePort: {{ .nodePort }}
       {{- end }}
