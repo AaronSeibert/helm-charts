@@ -49,7 +49,6 @@ ingress:
       gethomepage.dev/description: spoolman
       gethomepage.dev/group: Automation
       gethomepage.dev/name: spoolman
-      gethomepage.dev/weight: 10 # optional
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
