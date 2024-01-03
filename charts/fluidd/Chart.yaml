@@ -3,7 +3,7 @@ appVersion: v1.27.1
 description: Fluidd Helm Chart
 name: fluidd
 type: application
-version: 0.1.4
+version: 0.1.5
 dependencies:
 - name: base
   version: 1.0.6

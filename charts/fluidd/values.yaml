@@ -73,6 +73,15 @@ ports:
     nodePort: null
     # -- The protocol used for the service.
     protocol: TCP
+  websocket:
+    # -- Enable the websocket port
+    enabled: true
+    # -- Websocket port
+    port: 7130
+    # -- nodeport
+    nodePort: null
+    # -- Protocol
+    protocol: TCP
 
 secret:
   # -- Create a new secret
