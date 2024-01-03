@@ -1641,6 +1641,16 @@ entries:
   spoolman:
   - apiVersion: v2
     appVersion: 0.15.0
+    created: "2024-01-03T02:34:54.115170962Z"
+    description: A Helm chart for Kubernetes
+    digest: b81c2a11398c707c01379878010337292093c8813ef24abf96ee1b0019b1d508
+    name: spoolman
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/spoolman-0.1.2/spoolman-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.15.0
     created: "2024-01-03T02:28:06.941561796Z"
     description: A Helm chart for Kubernetes
     digest: 98436ae38cf8e564f5ebd47350168dfa1364a547c8135e611bafecaacbcc2af4
@@ -1772,4 +1782,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-03T02:28:06.941877167Z"
+generated: "2024-01-03T02:34:54.115762666Z"
