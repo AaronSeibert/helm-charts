@@ -1641,6 +1641,20 @@ entries:
   spoolman:
   - apiVersion: v2
     appVersion: 0.15.0
+    created: "2024-01-03T03:07:09.370734126Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Spoolman
+    digest: 8b52cee236695cfb6a9079e333be1e012065ff3b0e2df6ac2f73c23202bdd5c7
+    name: spoolman
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/spoolman-0.1.5/spoolman-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 0.15.0
     created: "2024-01-03T02:58:06.895609113Z"
     dependencies:
     - name: base
@@ -1694,6 +1708,20 @@ entries:
     - https://github.com/AaronSeibert/helm-charts/releases/download/spoolman-0.1.0/spoolman-0.1.0.tgz
     version: 0.1.0
   zwavejs:
+  - apiVersion: v2
+    appVersion: "8"
+    created: "2024-01-03T03:07:09.511466571Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: A Helm chart for Kubernetes
+    digest: 74e21d2dba22c3475c7ef2342687747f1ef397aa9eef9825d3b07bb5a747bdaf
+    name: zwavejs
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.7.3/zwavejs-0.7.3.tgz
+    version: 0.7.3
   - apiVersion: v2
     appVersion: "8"
     created: "2023-12-27T18:30:27.162265505Z"
@@ -1806,4 +1834,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-03T02:58:06.89595476Z"
+generated: "2024-01-03T03:07:09.511808833Z"
