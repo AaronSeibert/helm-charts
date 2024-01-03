@@ -49,7 +49,7 @@ spec:
             {{- range .Values.env }}
             - name: {{ .name }}
               value: {{ .value | quote }}
-            {{- end }
+            {{- end }}
           volumeMounts:
             {{- if eq (include "base.persistence.enabled" .) "true" }}
             - name: storage-volume
