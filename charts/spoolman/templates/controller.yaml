@@ -39,7 +39,7 @@ spec:
           ports:
             {{- range .Values.ports }}
             - name: {{ .name }}
-              port: {{ .port }}
+              containerPort: {{ .port }}
               {{- if and (eq $.Values.service.type "NodePort") .nodePort }}
               nodePort: {{ .nodePort }}
               {{- end }}

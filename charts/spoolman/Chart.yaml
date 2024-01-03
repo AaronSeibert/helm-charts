@@ -3,7 +3,7 @@ appVersion: 0.15.0
 description: Spoolman
 name: spoolman
 type: application
-version: 0.1.4
+version: 0.1.5
 dependencies:
 - name: base
   version: 1.0.6
