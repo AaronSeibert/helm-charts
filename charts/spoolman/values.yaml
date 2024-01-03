@@ -63,12 +63,14 @@ ingress:
 
 env:
   # -- Timezone for the container.
-  timezone: UTC
+  - name: TZ
+    value: UTC
+  # -- DB to use
+  - name: SPOOLMAN_DB_TYPE
+    value: sqlite
 
 ports:
-  http:
-    # -- Enable the port inside the `Deployment` and `Service` objects.
-    enabled: true
+  - name: http
     # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
     port: 8000
     # -- The external port used if `.service.type` == `NodePort`.

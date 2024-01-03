@@ -37,16 +37,19 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            {{- with .Values.ports.http }}
-            {{- if .enabled }}
-            - name: http
-              containerPort: {{ .port }}
+            {{- range .Values.ports }}
+            - name: {{ .name }}
+              port: {{ .port }}
+              {{- if and (eq $.Values.service.type "NodePort") .nodePort }}
+              nodePort: {{ .nodePort }}
+              {{- end }}
               protocol: {{ default "TCP" .protocol | quote }}
             {{- end }}
-            {{- end }}
           env:
-            - name: TZ
-              value: {{ .Values.env.timezone | quote }}
+            {{- range .Values.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }
           volumeMounts:
             {{- if eq (include "base.persistence.enabled" .) "true" }}
             - name: storage-volume

@@ -15,16 +15,13 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    {{- with .Values.ports.http }}
-    {{- if .enabled }}
-    - name: http
+    {{- range .Values.ports }}
+    - name: {{ .name }}
       port: {{ .port }}
-      targetPort: {{ .port }}
       {{- if and (eq $.Values.service.type "NodePort") .nodePort }}
       nodePort: {{ .nodePort }}
       {{- end }}
       protocol: {{ default "TCP" .protocol | quote }}
-    {{- end }}
     {{- end }}
   selector:
     {{- include "spoolman.selectorLabels" . | nindent 4 }}
