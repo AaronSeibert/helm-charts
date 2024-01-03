@@ -1641,6 +1641,20 @@ entries:
   spoolman:
   - apiVersion: v2
     appVersion: 0.15.0
+    created: "2024-01-03T02:58:06.895609113Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Spoolman
+    digest: 7bff3e2d5efd4345e8e507d765215a8627925195ba3b12bb01bbb9bcaf257397
+    name: spoolman
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/spoolman-0.1.4/spoolman-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.15.0
     created: "2024-01-03T02:53:02.949715622Z"
     description: Spoolman
     digest: 7adcc523d5d2dfc390587d97263cf63ade8abb67758ba7935d5c96c5daf9a420
@@ -1792,4 +1806,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-03T02:53:02.950017485Z"
+generated: "2024-01-03T02:58:06.89595476Z"
