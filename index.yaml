@@ -1638,6 +1638,17 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/redis-0.1.0/redis-0.1.0.tgz
     version: 0.1.0
+  spoolman:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-01-03T02:20:08.476913037Z"
+    description: A Helm chart for Kubernetes
+    digest: c442ef355faf857fd2ab9298ce07b8e27e2541ac5b9b814872a5a33c704db26f
+    name: spoolman
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/spoolman-0.1.0/spoolman-0.1.0.tgz
+    version: 0.1.0
   zwavejs:
   - apiVersion: v2
     appVersion: "8"
@@ -1751,4 +1762,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-03T01:55:54.414024301Z"
+generated: "2024-01-03T02:20:08.477420537Z"
