@@ -472,6 +472,21 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/homepage-0.1.0/homepage-0.1.0.tgz
     version: 0.1.0
+  influxdb:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-01-04T04:19:27.082903131Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: influxdb deployment
+    digest: 5a215a207884b791b4fab4ba0ddef779c2e23f1d47f5bfa53c1905b17a203e06
+    name: influxdb
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/influxdb-0.1.1/influxdb-0.1.1.tgz
+    version: 0.1.1
   paperless:
   - apiVersion: v2
     appVersion: 1.9.2
@@ -1834,4 +1849,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-03T03:07:09.511808833Z"
+generated: "2024-01-04T04:19:27.083547281Z"
