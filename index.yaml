@@ -1764,6 +1764,21 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/spoolman-0.1.0/spoolman-0.1.0.tgz
     version: 0.1.0
+  telegraf:
+  - apiVersion: v2
+    appVersion: "1.27"
+    created: "2024-01-04T20:07:09.042121571Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Telegraf Instance
+    digest: 2555bed6747228544356ddb8b6137dc56f502299207fedb6167cb94c6b3e5295
+    name: telegraf
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/telegraf-0.1.0/telegraf-0.1.0.tgz
+    version: 0.1.0
   zwavejs:
   - apiVersion: v2
     appVersion: "8"
@@ -1891,4 +1906,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-04T04:45:33.158568146Z"
+generated: "2024-01-04T20:07:09.042479157Z"
