@@ -13,7 +13,8 @@ fullnameOverride: ""
 podAnnotations: {}
 
 # -- Set the telegraf command (useful for using influxdb-generated config)
-command: ""
+command: [""]
+args: [""]
 
 controller:
   # -- Create a workload for this chart.

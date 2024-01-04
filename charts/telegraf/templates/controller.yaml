@@ -36,15 +36,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            {{- range .Values.ports }}
-            - name: {{ .name }}
-              containerPort: {{ .port }}
-              {{- if and (eq $.Values.service.type "NodePort") .nodePort }}
-              nodePort: {{ .nodePort }}
-              {{- end }}
-              protocol: {{ default "TCP" .protocol | quote }}
-            {{- end }}
           env:
             {{- range .Values.env }}
             - name: {{ .name }}
@@ -55,29 +46,8 @@ spec:
             - name: storage-volume
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}
             {{- end}}
-          startupProbe:
-            httpGet:
-              path: /
-              port: http
-              httpHeaders:
-                - name: Host
-                  value: {{ .Values.global.fqdn | quote }}
-            failureThreshold: 30
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /
-              httpHeaders:
-                - name: Host
-                  value: {{ .Values.global.fqdn | quote }}
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              httpHeaders:
-                - name: Host
-                  value: {{ .Values.global.fqdn | quote }}
-              port: http
+          command: {{ .Values.command }}
+          args: {{ .Values.args }}
           resources: {{ if not .Values.resources -}}{}{{- end }}
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
