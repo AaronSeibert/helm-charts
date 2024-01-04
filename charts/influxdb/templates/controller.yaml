@@ -58,7 +58,7 @@ spec:
           startupProbe:
             httpGet:
               path: /
-              port: influxdb
+              port: influx
               httpHeaders:
                 - name: Host
                   value: {{ .Values.global.fqdn | quote }}
@@ -70,14 +70,14 @@ spec:
               httpHeaders:
                 - name: Host
                   value: {{ .Values.global.fqdn | quote }}
-              port: influxdb
+              port: influx
           readinessProbe:
             httpGet:
               path: /
               httpHeaders:
                 - name: Host
                   value: {{ .Values.global.fqdn | quote }}
-              port: influxdb
+              port: influx
           resources: {{ if not .Values.resources -}}{}{{- end }}
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
