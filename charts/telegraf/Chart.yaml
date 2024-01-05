@@ -3,7 +3,7 @@ appVersion: "1.27"
 description: Telegraf Instance
 name: telegraf
 type: application
-version: 0.1.1
+version: 0.1.2
 dependencies:
 - name: base
   version: 1.0.6
