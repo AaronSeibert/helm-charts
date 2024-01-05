@@ -1767,6 +1767,20 @@ entries:
   telegraf:
   - apiVersion: v2
     appVersion: "1.27"
+    created: "2024-01-05T02:54:05.984004148Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Telegraf Instance
+    digest: 426beed58a82e186ae4bdf023712713841c00d82ea5fd8b6271a8cada175b282
+    name: telegraf
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/telegraf-0.1.4/telegraf-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: "1.27"
     created: "2024-01-05T02:44:08.685137502Z"
     dependencies:
     - name: base
@@ -1934,4 +1948,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-05T02:44:08.685530743Z"
+generated: "2024-01-05T02:54:05.984361382Z"
