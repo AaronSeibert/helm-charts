@@ -46,7 +46,9 @@ spec:
             - name: storage-volume
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}
             {{- end}}
-          args: ["--config https://influxdb.seibert.family/api/v2/telegrafs/$(INFLUX_CONFIG_ID)"]
+          args: 
+            - --config
+            - https://influxdb.seibert.family/api/v2/telegrafs/$(INFLUX_CONFIG_ID)
           resources: {{ if not .Values.resources -}}{}{{- end }}
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
