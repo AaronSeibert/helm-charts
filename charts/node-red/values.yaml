@@ -69,7 +69,7 @@ env:
 ports:
   - name: http
     # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
-    port: 80
+    port: 1880
     # -- The external port used if `.service.type` == `NodePort`.
     nodePort: null
     # -- The protocol used for the service.
