@@ -546,6 +546,20 @@ entries:
   node-red:
   - apiVersion: v2
     appVersion: 3.1.5
+    created: "2024-02-27T22:24:56.372088101Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Node-Red
+    digest: 7ccc98054a30742adbe2a38d870da52187fb661a1c807a82f8449f3ddf9ce669
+    name: node-red
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/node-red-0.1.4/node-red-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 3.1.5
     created: "2024-02-27T21:50:00.241088647Z"
     dependencies:
     - name: base
@@ -2019,4 +2033,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-02-27T21:50:00.24147003Z"
+generated: "2024-02-27T22:24:56.372532124Z"
