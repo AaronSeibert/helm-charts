@@ -1,0 +1,155 @@
+# Default values for node-red.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+image:
+  repository: ""
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+global:
+  # -- Sets the fqdn to be used through various templates
+  fqdn: node-red.example.com
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+controller:
+  # -- Create a workload for this chart.
+  enabled: true
+  # -- Type of the workload object.
+  kind: Deployment
+  # -- The number of replicas.
+  replicas: 1
+  # -- Additional annotations for the controller object.
+  annotations: {}
+  # -- Additional labels for the controller object.
+  labels: {}
+
+service:
+  # -- Create a service for exposing this chart.
+  enabled: true
+  # -- The service type used.
+  type: ClusterIP
+  # -- Additional annotations for the service object.
+  annotations: {}
+  # -- Additional labels for the service object.
+  labels: {}
+
+ingress:
+  # -- Create an Ingress object for exposing this chart
+  enabled: true
+  className: ""
+  annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-staging
+      kubernetes.io/ingress.class: traefik
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: node-red
+      gethomepage.dev/group: Ungrouped
+      gethomepage.dev/name: node-red
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: ''
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: node-red-tls
+      hosts:
+        - node-red.example.com
+
+env:
+  # -- Timezone for the container.
+  - name: TZ
+    value: UTC
+
+ports:
+  - name: http
+    # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
+    port: 80
+    # -- The external port used if `.service.type` == `NodePort`.
+    nodePort: null
+    # -- The protocol used for the service.
+    protocol: TCP
+
+secret:
+  # -- Create a new secret
+  create: false
+  # -- Use an existing secre
+  existingSecret: ''
+  # -- Secret Key used when not using an existing secret.
+  secretKey: ''
+  # -- Additional annotations for the secret object.
+  annotations: {}
+  # -- Additional labels for the secret object.
+  labels: {}
+  type: kubernetes.io/service-account-token
+
+persistentVolumeClaim:
+  # -- Create a new persistent volume claim object.
+  create: false
+  # -- Mount path of the persistent volume claim object.
+  mountPath: ''
+  # -- Access mode of the persistent volume claim object.
+  accessMode: ReadWriteMany
+  # -- Volume mode of the persistent volume claim object.
+  volumeMode: Filesystem
+  # -- Storage request size for the persistent volume claim object.
+  size: 5Gi
+  # -- Storage class name for the persistent volume claim object.
+  storageClassName: ''
+  # -- Use an existing persistent volume claim object.
+  existingPersistentVolumeClaim: ''
+  # -- Additional annotations for the persistent volume claim object.
+  annotations: {}
+  # -- Additional labels for the persistent volume claim object.
+  labels: {}
+
+serviceAccount:
+  # -- Specify the service account used for the controller.
+  create: false
+  name: ''
+
+rbac:
+  # -- Create `Role` and `RoleBinding` objects.
+  create: false
+  # -- Additional annotations for the role and role binding objects.
+  annotations: {}
+  # -- Additional labels for the role and role binding objects.
+  labels: {}
+
+# -- Pod-level security attributes. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context).
+securityContext: {}
+  # fsGroup: 1000
+  # runAsNonRoot: true
+  # runAsGroup: 1000
+  # runAsUser: 1000
+
+# -- Compute resources used by the container. More info [here](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# -- Pod-level affinity. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling).
+affinity: {}
+  # nodeAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     nodeSelectorTerms:
+  #       - matchExpressions:
+  #           - key: kubernetes.io/hostname
+  #             operator: In
+  #             values:
+  #               - my-node-xyz
+
+# -- Pod-level tolerations. More info [here](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling).
+tolerations: {}
+  # - key: node-role.kubernetes.io/control-plane
+  #   operator: Exists
+  #   effect: NoSchedule
