@@ -3,7 +3,7 @@ appVersion: 3.1.5
 description: Node-Red
 name: node-red
 type: application
-version: 0.1.0
+version: 0.1.1
 dependencies:
 - name: base
   version: 1.0.6
