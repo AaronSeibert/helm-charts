@@ -32,6 +32,8 @@ spec:
         {{- include "node-red.selectorLabels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "node-red.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
