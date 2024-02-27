@@ -543,6 +543,21 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/influxdb-0.1.1/influxdb-0.1.1.tgz
     version: 0.1.1
+  node-red:
+  - apiVersion: v2
+    appVersion: 3.1.5
+    created: "2024-02-27T16:34:43.852973502Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: Node-Red
+    digest: 8ad0c128c972051c2b12a5c3cc42a2ef7109789efea05e7f578385bc3eea51ff
+    name: node-red
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/node-red-0.1.0/node-red-0.1.0.tgz
+    version: 0.1.0
   paperless:
   - apiVersion: v2
     appVersion: 1.9.2
@@ -1962,4 +1977,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-01-08T02:08:36.804179075Z"
+generated: "2024-02-27T16:34:43.853745468Z"
