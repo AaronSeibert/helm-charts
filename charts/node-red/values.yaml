@@ -74,6 +74,9 @@ ports:
     nodePort: null
     # -- The protocol used for the service.
     protocol: TCP
+  - name: alexa-proxy
+    port: 1881
+    protocol: TCP
 
 secret:
   # -- Create a new secret
