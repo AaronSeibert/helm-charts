@@ -131,7 +131,7 @@ ports:
 
 secret:
   # -- Create a new secret containing the [secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security).
-  create: true
+  create: false
   # -- Use an existing secret to store the [secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security).
   existingSecret: ''
   # -- [Secret key](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#hosting-security) used when not using an existing secret.
