@@ -1424,6 +1424,20 @@ entries:
   paperless-ngx:
   - apiVersion: v2
     appVersion: 2.6.1
+    created: "2024-03-05T21:59:44.641971486Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    description: Paperless-NGX Application - webserver component
+    digest: 2474b4f922a861f16b694f19ec90489594cff0996ba6654385a6a95564b2694a
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-ngx-0.1.30/paperless-ngx-0.1.30.tgz
+    version: 0.1.30
+  - apiVersion: v2
+    appVersion: 2.6.1
     created: "2024-03-05T21:55:30.644184005Z"
     dependencies:
     - name: base
@@ -2325,4 +2339,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-03-05T21:56:22.808602644Z"
+generated: "2024-03-05T21:59:44.642445206Z"
