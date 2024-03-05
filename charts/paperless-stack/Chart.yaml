@@ -18,12 +18,12 @@ dependencies:
   repository: https://helm.seibert.family/
   alias: broker
 - name: postgres
-  version: 0.1.20
+  version: 0.1.19
   repository: https://helm.seibert.family/
   condition: global.database.postgres.enabled
   alias: database
 - name: paperless-ngx
-  version: 0.1.28
+  version: 0.1.27
   repository: https://helm.seibert.family/
   alias: webserver
   condition: webserver.enabled
