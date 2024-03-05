@@ -1,9 +1,9 @@
 apiVersion: v2
-appVersion: 1.9.2
+appVersion: v2.6.1
 description: Paperless-NGX Application - webserver component
 name: paperless-ngx
 type: application
-version: 0.1.24
+version: 0.1.25
 dependencies:
 - name: base
   version: 1.0.4

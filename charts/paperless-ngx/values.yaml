@@ -74,6 +74,27 @@ ingressRoute:
   # -- Additional labels for the ingress route object.
   labels: {}
 
+ingress:
+  # -- Create an Ingress object for exposing this chart
+  enabled: true
+  className: ""
+  annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-stage
+      kubernetes.io/ingress.class: traefik
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: Electronic Filing Cabinet
+      gethomepage.dev/group: Documentation
+      gethomepage.dev/name: Paperless NGX
+  hosts:
+    - host: ''
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: paperless-ngx-tls
+      hosts:
+        - paperless-ngx.example.com
+
 certificate:
   # -- Create an Certificate object for the exposed chart.
   create: false
