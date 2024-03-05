@@ -67,7 +67,7 @@ spec:
             - name: PAPERLESS_REDIS
               value: "redis://{{ .Values.global.broker.redis.host }}:{{ .Values.global.broker.redis.port }}"
             {{- end}}
-            {{- .Values.consumption.enabled }}
+            {{- if .Values.consumption.enabled }}
             - name: PAPERLESS_CONSUMPTION_DIR
               value: {{ .Values.consumption.mountPath }}
             {{- if .Values.consumption.nfs.enabled }}
