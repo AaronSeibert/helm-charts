@@ -659,6 +659,38 @@ entries:
   paperless:
   - apiVersion: v2
     appVersion: 2.6.1
+    created: "2024-03-05T22:01:02.546031947Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.4
+    - alias: broker
+      condition: global.broker.redis.enabled
+      name: redis
+      repository: https://helm.seibert.family/
+      version: 0.1.9
+    - alias: database
+      condition: global.database.postgres.enabled
+      name: postgres
+      repository: https://helm.seibert.family/
+      version: 0.1.21
+    - alias: webserver
+      condition: webserver.enabled
+      name: paperless-ngx
+      repository: https://helm.seibert.family/
+      version: 0.1.30
+    description: An umbrella chart for Paperless-NGX.
+    digest: d2eb3618afab4a1f2457592111c7661e5f0f0b419c51e089e2ecd24a9fa88539
+    maintainers:
+    - email: aaron@awseibert.net
+      name: Aaron Seibert
+    name: paperless
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/paperless-0.1.37/paperless-0.1.37.tgz
+    version: 0.1.37
+  - apiVersion: v2
+    appVersion: 2.6.1
     created: "2024-03-05T21:56:22.808049585Z"
     dependencies:
     - name: base
@@ -2339,4 +2371,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-03-05T21:59:44.642445206Z"
+generated: "2024-03-05T22:01:02.546614067Z"
