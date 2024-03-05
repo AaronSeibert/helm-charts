@@ -8,4 +8,4 @@ data:
   POSTGRES_DB: {{ .Values.configMap.postgresDB }}
   POSTGRES_USER: {{ .Values.configMap.postgresUser }}
   POSTGRES_PASSWORD: {{ .Values.configMap.postgresPassword }}
-  PG_DATA: "/var/lib/postgresql/data/pgdata"
+  PGDATA: "/var/lib/postgresql/data/pgdata"
