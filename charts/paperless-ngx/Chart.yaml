@@ -3,7 +3,7 @@ appVersion: 2.6.1
 description: Paperless-NGX Application - webserver component
 name: paperless-ngx
 type: application
-version: 0.1.29
+version: 0.1.30
 dependencies:
 - name: base
   version: 1.0.4
