@@ -51,7 +51,7 @@ spec:
               value: "https://{{ .Values.env.fqdn }}"
             {{- if .Values.global.barcodes.enabled }}
             - name: PAPERLESS_CONSUMER_ENABLE_BARCODES
-              value: True
+              value: "true"
             {{- end }}
             {{- if .Values.global.database.postgres.enabled }}
             - name: PAPERLESS_DBENGINE
