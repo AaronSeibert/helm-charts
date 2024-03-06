@@ -49,6 +49,10 @@ spec:
               value: {{ .Values.env.timezone | quote }}
             - name: PAPERLESS_URL
               value: "https://{{ .Values.env.fqdn }}"
+            {{- if .Values.global.barcodes.enabled }}
+            - name: PAPERLESS_CONSUMER_ENABLE_BARCODES
+              value: True
+            {{- end }}
             {{- if .Values.global.database.postgres.enabled }}
             - name: PAPERLESS_DBENGINE
               value: postgres

@@ -11,6 +11,10 @@ nameOverride: ''
 fullnameOverride: ''
 
 global:
+  # -- barcode properties
+  barcode:
+    # -- enable/disable barcode support
+    enabled: false
   # -- database connection properties
   database:
     postgres:
