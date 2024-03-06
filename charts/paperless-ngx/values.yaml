@@ -12,7 +12,7 @@ fullnameOverride: ''
 
 global:
   # -- barcode properties
-  barcode:
+  barcodes:
     # -- enable/disable barcode support
     enabled: false
   # -- database connection properties
