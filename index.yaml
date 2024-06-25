@@ -2039,6 +2039,20 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "15.2"
+    created: "2024-06-25T04:53:07.419667331Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.10
+    description: Postgres Chart
+    digest: d00ec16ef3716bfde41ba216ac64d6acd93fe36002d79ab09bfb4dd951de90fc
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/postgres-0.1.23/postgres-0.1.23.tgz
+    version: 0.1.23
+  - apiVersion: v2
+    appVersion: "15.2"
     created: "2024-06-25T04:51:52.295907618Z"
     description: Postgres Chart
     digest: 0b8a6750650c39cd748d4311709c1ad1d9c5ec5b395564d9adf84f1c27e99b51
@@ -2601,4 +2615,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-06-25T04:51:52.296502726Z"
+generated: "2024-06-25T04:53:07.420707406Z"
