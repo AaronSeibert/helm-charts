@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   base:
   - apiVersion: v2
+    created: "2024-06-25T04:10:20.039283135Z"
+    description: Base Helm Chart
+    digest: d73d17b51cce95145bc5b6c99cdc40553efbedf8e006c52a978cca351b733aa5
+    home: https://helm.seibert.family
+    keywords:
+    - library-chart
+    maintainers:
+    - email: aaron@awseibert.net
+      name: aaronseibert
+    name: base
+    sources:
+    - https://github.com/aaronseibert/helm-charts
+    type: library
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/base-1.0.9/base-1.0.9.tgz
+    version: 1.0.9
+  - apiVersion: v2
     created: "2024-06-25T04:07:11.043847421Z"
     description: Base Helm Chart
     digest: 66a5ce6c013ef59fafe8df32be3b7ab74b4997cfafe117039f86e64dae371a18
@@ -2557,4 +2574,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-06-25T04:07:11.044327615Z"
+generated: "2024-06-25T04:10:20.039885341Z"
