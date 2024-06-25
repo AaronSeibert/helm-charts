@@ -2,7 +2,7 @@
 gethomepage.dev/description: {{ .Chart.Description }}
 gethomepage.dev/enabled: "true"
 gethomepage.dev/group: ""
-gethomepage.dev/icon: {{ printf "%s.png" .Chart.Name }}
+gethomepage.dev/icon: {{ printf "si-%s" .Chart.Name }}
 gethomepage.dev/name: {{ .Chart.Name }}
 gethomepage.dev/siteMonitor: {{ printf "https://%s.seibert.family" .Chart.Name }}
 {{- end -}}
