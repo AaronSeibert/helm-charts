@@ -24,8 +24,8 @@ vault:
 
 global:
   # -- Sets the fqdn to be used through various templates
-  subdomain: ''
-  domain: ''
+  subdomain: ""
+  domain: ""
 
 nameOverride: ""
 fullnameOverride: ""
@@ -71,25 +71,22 @@ services:
 
 ingress:
   # -- Create an Ingress object for exposing this chart
-  enabled: true
+  enabled: false
   className: ""
   gethomepage:
-    enabled: true
+    enabled: false
     description: mosquitto
     group: Ungrouped
     name: mosquitto
+    # icon: ''
+    # widget:
+    #   type: ''
+    #   url: ''
+    # pod-selector: ''
+    # weight: 10
+    # instance: 'public'
     siteMonitor:
       enabled: true
-      description: mosquitto
-      group: Ungrouped
-      name: mosquitto
-      # icon: ''
-      # widget:
-      #   type: ''
-      #   url: ''
-      # pod-selector: ''
-      # weight: 10
-      # instance: 'public'
   annotations:
     kubernetes.io/ingress.class: traefik
     cert-manager.io/cluster-issuer: letsencrypt-staging
@@ -102,7 +99,7 @@ ingress:
           port: websocket
   tls:
     enabled: false
-    clusterIssuer: ''
+    clusterIssuer: ""
 
 env:
   # -- Timezone for the container.
