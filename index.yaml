@@ -154,6 +154,17 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/base-1.0.1/base-1.0.1.tgz
     version: 1.0.1
+  bitwarden-secrets:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-12-10T16:44:17.211043315Z"
+    description: A Helm chart for Kubernetes
+    digest: d27dc934e58aacf3ac9eaa66f7daa124cdcc7da223d07f4cd9539a48eae68344
+    name: bitwarden-secrets
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/bitwarden-secrets-0.1.0/bitwarden-secrets-0.1.0.tgz
+    version: 0.1.0
   fluidd:
   - apiVersion: v2
     appVersion: v1.27.1
@@ -2615,4 +2626,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-06-25T04:53:07.420707406Z"
+generated: "2024-12-10T16:44:17.212061334Z"
