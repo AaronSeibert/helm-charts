@@ -54,30 +54,17 @@ spec:
             {{- if eq (include "base.persistence.enabled" .) "true" }}
             - name: storage-volume
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}
-            {{- end}}
-          startupProbe:
-            httpGet:
-              path: /
-              port: http
-              httpHeaders:
-                - name: Host
-                  value: {{ .Values.global.fqdn | quote }}
-            failureThreshold: 30
+            {{- end }}
+          readinessProbe:
+            tcpSocket:
+              port: 9001
+            initialDelaySeconds: 15
             periodSeconds: 10
           livenessProbe:
-            httpGet:
-              path: /
-              httpHeaders:
-                - name: Host
-                  value: {{ .Values.global.fqdn | quote }}
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              httpHeaders:
-                - name: Host
-                  value: {{ .Values.global.fqdn | quote }}
-              port: http
+            tcpSocket:
+              port: 1883
+            initialDelaySeconds: 15
+            periodSeconds: 10
           resources: {{ if not .Values.resources -}}{}{{- end }}
             {{- if .Values.resources }}
             {{- toYaml .Values.resources | nindent 12 }}
