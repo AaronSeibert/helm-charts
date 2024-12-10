@@ -157,6 +157,16 @@ entries:
   bitwarden-secrets:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-12-10T17:03:54.055853334Z"
+    description: Chart to generate secrets manifests using Bitwarden Secrets
+    digest: 330a55be9a98258adfd91e4c9326e0bf2a17a769260544db3cd11390c676efb8
+    name: bitwarden-secrets
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/bitwarden-secrets-0.5.0/bitwarden-secrets-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-12-10T16:56:58.704706903Z"
     description: Chart to generate secrets manifests using Bitwarden Secrets
     digest: efea8f58a098228ba2b519ea72c0fd1e2e71f708a91238aa31a4d78ec9e6333a
@@ -2656,4 +2666,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-12-10T16:56:58.705285153Z"
+generated: "2024-12-10T17:03:54.056361601Z"
