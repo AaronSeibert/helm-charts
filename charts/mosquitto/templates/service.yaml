@@ -1,0 +1,28 @@
+{{- range .Values.services -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "%s.%s" "mosquitto" .name }}
+  labels:
+    {{- include "mosquitto.labels" $ | nindent 4 }}
+    {{- with .labels }}
+    {{ toYaml . | indent 4 }}
+    {{- end }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .type }}
+  ports:
+  {{- range .ports }}
+  - name: {{ .name }}
+    port: {{ .port }}
+    {{- if and (eq $.type "NodePort") .nodePort }}
+    nodePort: {{ .nodePort }}
+    {{- end }}
+    protocol: {{ default "TCP" .protocol | quote }}
+  {{- end }}
+  selector:
+    {{- include "mosquitto.selectorLabels" $ | nindent 4 }}
+{{- end }}

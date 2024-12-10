@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: "2.0"
+description: A Helm chart for Kubernetes
+name: mosquitto
+type: application
+version: 0.1.0
+dependencies:
+- name: base
+  version: 1.0.6
+  repository: https://helm.seibert.family/
