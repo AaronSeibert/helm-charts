@@ -24,8 +24,8 @@ vault:
 
 global:
   # -- Sets the fqdn to be used through various templates
-  subdomain: mqtt
-  domain: seibert.family
+  subdomain: ''
+  domain: ''
 
 nameOverride: ""
 fullnameOverride: ""
