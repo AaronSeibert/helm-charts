@@ -662,6 +662,21 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/influxdb-0.1.1/influxdb-0.1.1.tgz
     version: 0.1.1
+  mosquitto:
+  - apiVersion: v2
+    appVersion: "2.0"
+    created: "2024-12-10T20:59:01.260879482Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: A Helm chart for Kubernetes
+    digest: c60c005735c74cfccb10c314cca6ca86cabf17ae5e5b7484220836ed5f991918
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/mosquitto-0.1.0/mosquitto-0.1.0.tgz
+    version: 0.1.0
   node-red:
   - apiVersion: v2
     appVersion: 3.1.5
@@ -2666,4 +2681,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-12-10T17:03:54.056361601Z"
+generated: "2024-12-10T20:59:01.261465717Z"
