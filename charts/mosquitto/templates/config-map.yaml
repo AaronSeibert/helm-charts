@@ -6,8 +6,7 @@ data:
   mosquitto.conf: |
     # Config file for Mosquitto
     #
-    per_listener_settings false
-    allow_anonymous true
+    per_listener_settings true
     persistence false
     #persistence_file
     #persistence_location
@@ -15,9 +14,12 @@ data:
     # =================================================================
     # Listeners
     # =================================================================
-    socket_domain ipv4
     listener 1883
+    allow_anonymous true
+    socket_domain ipv4
     protocol mqtt
 
     listener 9001
+    socket_domain ipv4
+    allow_anonymous true
     protocol websockets
