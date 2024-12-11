@@ -11,6 +11,11 @@ data:
     persistence false
     #persistence_file
     #persistence_location
+
+    # =================================================================
+    # Listeners
+    # =================================================================
+    socket_domain ipv4
     listener 1883
     protocol mqtt
 

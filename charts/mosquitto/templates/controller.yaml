@@ -56,7 +56,7 @@ spec:
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}
             {{- end }}
             - name: mosquitto-config
-              mountPath: /etc/mosquitto/mosquitto.conf
+              mountPath: /mosquitto/config/mosquitto.conf
               subPath: mosquitto.conf
           readinessProbe:
             tcpSocket:
