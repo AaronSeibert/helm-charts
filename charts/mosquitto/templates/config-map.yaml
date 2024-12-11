@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+name: mosquitto-config
+data:
+  mosquitto.conf: |
+  # Config file for Mosquitto
+  #
+  per_listener_settings false
+  allow_anonymous true
+  persistence false
+  #persistence_file
+  #persistence_location
+  listener 1883
+
+  listener 9001
+  protocol websockets

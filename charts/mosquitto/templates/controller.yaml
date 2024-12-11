@@ -55,6 +55,8 @@ spec:
             - name: storage-volume
               mountPath: {{ .Values.persistentVolumeClaim.mountPath }}
             {{- end }}
+            - name: mosquitto-config
+              mountPath: /etc/mosquitto/mosquitto.conf
           readinessProbe:
             tcpSocket:
               port: 9001
@@ -78,6 +80,12 @@ spec:
             {{- else }}
             claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
             {{- end }}
+        - name: config-mosquitto
+          configMap:
+            name: mosquitto-config
+            items:
+            - key: mosquitto.conf
+              path: /etc/mosquitto/mosquitto.conf
         {{- end }}
       {{- if .Values.securityContext }}
       securityContext:
