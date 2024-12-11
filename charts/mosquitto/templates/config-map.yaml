@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
 name: mosquitto-config
 data:
-  mosquitto.conf: |
+  mosquitto.conf: |-
   # Config file for Mosquitto
   #
   per_listener_settings false
