@@ -80,7 +80,7 @@ spec:
             {{- else }}
             claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
             {{- end }}
-        - name: config-mosquitto
+        - name: mosquitto-config
           configMap:
             name: mosquitto-config
             items:
