@@ -53,7 +53,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ .backend.service.name }}
+                name: {{ include "mosquitto.fullname" . }}
                 port: 
                   name: {{ .backend.service.port }}
           {{- end }}

@@ -45,7 +45,7 @@ controller:
   labels: {}
 
 services:
-  - name: websocket
+  - name: mosquitto
     # -- The service type used.
     type: ClusterIP
     # -- Additional annotations for the service object.
