@@ -665,6 +665,20 @@ entries:
   mosquitto:
   - apiVersion: v2
     appVersion: "2.0"
+    created: "2024-12-11T02:02:00.460327235Z"
+    dependencies:
+    - name: base
+      repository: https://helm.seibert.family/
+      version: 1.0.6
+    description: A Helm chart for Kubernetes
+    digest: d369fd0c22c2669d66e1ab5e2e74fc1b8c7a533e38953b70490979751d3bed2a
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/AaronSeibert/helm-charts/releases/download/mosquitto-0.8.5/mosquitto-0.8.5.tgz
+    version: 0.8.5
+  - apiVersion: v2
+    appVersion: "2.0"
     created: "2024-12-11T01:44:39.120600932Z"
     dependencies:
     - name: base
@@ -2821,4 +2835,4 @@ entries:
     urls:
     - https://github.com/AaronSeibert/helm-charts/releases/download/zwavejs-0.2.0/zwavejs-0.2.0.tgz
     version: 0.2.0
-generated: "2024-12-11T01:44:39.121146047Z"
+generated: "2024-12-11T02:02:00.460874698Z"
