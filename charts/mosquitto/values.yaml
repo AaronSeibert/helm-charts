@@ -55,7 +55,7 @@ services:
     ports:
     - name: websocket
       # -- The port used as internal port and cluster-wide port if `.service.type` == `ClusterIP`.
-      port: 9091
+      port: 9001
       # -- The external port used if `.service.type` == `NodePort`.
       nodePort: null
       # -- The protocol used for the service.
