@@ -57,6 +57,7 @@ spec:
             {{- end }}
             - name: mosquitto-config
               mountPath: /etc/mosquitto/mosquitto.conf
+              subPath: mosquitto.conf
           readinessProbe:
             tcpSocket:
               port: 9001
@@ -86,7 +87,7 @@ spec:
             name: mosquitto-config
             items:
             - key: mosquitto.conf
-              path: /etc/mosquitto/mosquitto.conf
+              path: mosquitto.conf
       {{- if .Values.securityContext }}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
