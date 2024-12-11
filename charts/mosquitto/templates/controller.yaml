@@ -85,9 +85,6 @@ spec:
         - name: mosquitto-config
           configMap:
             name: mosquitto-config
-            items:
-            - key: mosquitto.conf
-              path: mosquitto.conf
       {{- if .Values.securityContext }}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
