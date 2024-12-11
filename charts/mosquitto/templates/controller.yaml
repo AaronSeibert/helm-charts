@@ -80,13 +80,13 @@ spec:
             {{- else }}
             claimName: {{ .Values.persistentVolumeClaim.existingPersistentVolumeClaim }}
             {{- end }}
+        {{- end }}
         - name: mosquitto-config
           configMap:
             name: mosquitto-config
             items:
             - key: mosquitto.conf
               path: /etc/mosquitto/mosquitto.conf
-        {{- end }}
       {{- if .Values.securityContext }}
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
