@@ -96,7 +96,9 @@ ingress:
       backend:
         service:
           name: websocket
-          port: websocket
+          port:
+            name: websocket
+            number: 9001
   tls:
     enabled: false
     clusterIssuer: ""
